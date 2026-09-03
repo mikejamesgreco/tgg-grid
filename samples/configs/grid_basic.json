@@ -1,10 +1,174 @@
 {
-  "sample": "../grid/basic_inventory.csv",
-  "purpose": "Starter Grid sample configuration notes",
-  "viewType": "grid",
-  "suggestedFormatting": {
-    "Quantity": "Integer",
-    "Unit_Price": "Currency",
-    "Last_Updated": "Date"
-  }
+  "version": 1,
+  "dataFile": "basic_inventory.csv",
+  "generated": false,
+  "grid": {
+    "delimiter": ",",
+    "visibleRows": 10,
+    "rowHeightMode": "auto",
+    "overscan": 8
+  },
+  "columns": [
+    {
+      "name": "Product_ID",
+      "order": 0,
+      "width": 140,
+      "hidden": false,
+      "pin": "none"
+    },
+    {
+      "name": "Product_Name",
+      "order": 1,
+      "width": 190,
+      "hidden": false,
+      "pin": "none"
+    },
+    {
+      "name": "Category",
+      "order": 2,
+      "width": 140,
+      "hidden": false,
+      "pin": "none"
+    },
+    {
+      "name": "Quantity",
+      "order": 3,
+      "width": 140,
+      "hidden": false,
+      "pin": "none"
+    },
+    {
+      "name": "Unit_Price",
+      "order": 4,
+      "width": 140,
+      "hidden": false,
+      "pin": "none"
+    },
+    {
+      "name": "Status",
+      "order": 5,
+      "width": 140,
+      "hidden": false,
+      "pin": "none"
+    },
+    {
+      "name": "Last_Updated",
+      "order": 6,
+      "width": 140,
+      "hidden": false,
+      "pin": "none"
+    },
+    {
+      "name": "Website",
+      "order": 7,
+      "width": 250,
+      "hidden": false,
+      "pin": "none"
+    }
+  ],
+  "displayRules": [],
+  "dataValidation": [],
+  "filters": [],
+  "sorts": [],
+  "formulas": [],
+  "grouping": {
+    "columns": [],
+    "summaries": []
+  },
+  "dataQuality": null,
+  "derivedColumns": [],
+  "cellRenderers": [],
+  "actionColumns": [],
+  "analysis": {
+    "pivot": null,
+    "aggregate": null,
+    "pivotChart": null,
+    "aggregateChart": null,
+    "activeChartSource": "aggregate"
+  },
+  "views": [
+    {
+      "name": "Inventory Grid",
+      "viewType": "grid",
+      "kanban": null,
+      "gantt": null,
+      "sequence": null,
+      "api": null,
+      "state": {
+        "columns": [
+          {
+            "name": "Product_ID",
+            "order": 0,
+            "width": 140,
+            "hidden": false,
+            "pin": "none"
+          },
+          {
+            "name": "Product_Name",
+            "order": 1,
+            "width": 190,
+            "hidden": false,
+            "pin": "none"
+          },
+          {
+            "name": "Category",
+            "order": 2,
+            "width": 140,
+            "hidden": false,
+            "pin": "none"
+          },
+          {
+            "name": "Quantity",
+            "order": 3,
+            "width": 140,
+            "hidden": false,
+            "pin": "none"
+          },
+          {
+            "name": "Unit_Price",
+            "order": 4,
+            "width": 140,
+            "hidden": false,
+            "pin": "none"
+          },
+          {
+            "name": "Status",
+            "order": 5,
+            "width": 140,
+            "hidden": false,
+            "pin": "none"
+          },
+          {
+            "name": "Last_Updated",
+            "order": 6,
+            "width": 140,
+            "hidden": false,
+            "pin": "none"
+          },
+          {
+            "name": "Website",
+            "order": 7,
+            "width": 250,
+            "hidden": false,
+            "pin": "none"
+          }
+        ],
+        "filters": [],
+        "sorts": [],
+        "globalSearch": "",
+        "grouping": {
+          "columns": [],
+          "summaries": []
+        },
+        "freezePanes": {
+          "throughColumn": null,
+          "topRows": 0
+        },
+        "kanbanGridMode": "collapsed",
+        "openPanels": []
+      }
+    }
+  ],
+  "activeView": "Inventory Grid",
+  "openPanels": []
 }
