@@ -1,0 +1,238 @@
+{
+  "version": 1,
+  "dataFile": "sales_pivot_analysis.csv",
+  "generated": false,
+  "grid": {
+    "delimiter": ",",
+    "visibleRows": 15,
+    "rowHeightMode": "auto",
+    "overscan": 8
+  },
+  "columns": [
+    {
+      "name": "Month",
+      "order": 0,
+      "width": 100,
+      "hidden": false,
+      "pin": "none"
+    },
+    {
+      "name": "Region",
+      "order": 1,
+      "width": 100,
+      "hidden": false,
+      "pin": "none"
+    },
+    {
+      "name": "Product_Category",
+      "order": 2,
+      "width": 150,
+      "hidden": false,
+      "pin": "none"
+    },
+    {
+      "name": "Units",
+      "order": 3,
+      "width": 90,
+      "hidden": false,
+      "pin": "none",
+      "format": {
+        "type": "integer",
+        "decimals": 0,
+        "thousands": true,
+        "currencySymbol": "$",
+        "alignment": "auto",
+        "nullDisplay": ""
+      }
+    },
+    {
+      "name": "Revenue",
+      "order": 4,
+      "width": 120,
+      "hidden": false,
+      "pin": "none",
+      "format": {
+        "type": "currency",
+        "decimals": 2,
+        "thousands": true,
+        "currencySymbol": "$",
+        "alignment": "auto",
+        "nullDisplay": ""
+      }
+    },
+    {
+      "name": "Profit",
+      "order": 5,
+      "width": 120,
+      "hidden": false,
+      "pin": "none",
+      "format": {
+        "type": "currency",
+        "decimals": 2,
+        "thousands": true,
+        "currencySymbol": "$",
+        "alignment": "auto",
+        "nullDisplay": ""
+      }
+    }
+  ],
+  "displayRules": [],
+  "dataValidation": [],
+  "filters": [],
+  "sorts": [],
+  "formulas": [],
+  "grouping": {
+    "columns": [],
+    "summaries": []
+  },
+  "dataQuality": null,
+  "derivedColumns": [],
+  "cellRenderers": [],
+  "actionColumns": [],
+  "analysis": {
+    "pivot": {
+      "scope": "all",
+      "rows": [
+        "Region",
+        "Product_Category"
+      ],
+      "column": "Month",
+      "values": [
+        {
+          "column": "Revenue",
+          "function": "sum"
+        },
+        {
+          "column": "Profit",
+          "function": "sum"
+        }
+      ],
+      "rowLimit": {
+        "mode": "all",
+        "count": 10,
+        "measureIndex": 0
+      },
+      "valueDisplay": "normal"
+    },
+    "aggregate": null,
+    "pivotChart": {
+      "source": "pivot",
+      "type": "line",
+      "category": "Product_Category",
+      "measure": "Sum(Revenue)",
+      "series": [
+        "2026-01",
+        "2026-02",
+        "2026-03",
+        "2026-04",
+        "2026-05",
+        "2026-06"
+      ],
+      "title": "Monthly Revenue by Product Category",
+      "showValues": false
+    },
+    "aggregateChart": null,
+    "activeChartSource": "pivot"
+  },
+  "views": [
+    {
+      "name": "Sales Pivot Analysis",
+      "viewType": "grid",
+      "kanban": null,
+      "gantt": null,
+      "sequence": null,
+      "api": null,
+      "state": {
+        "columns": [
+          {
+            "name": "Month",
+            "order": 0,
+            "width": 100,
+            "hidden": false,
+            "pin": "none"
+          },
+          {
+            "name": "Region",
+            "order": 1,
+            "width": 100,
+            "hidden": false,
+            "pin": "none"
+          },
+          {
+            "name": "Product_Category",
+            "order": 2,
+            "width": 150,
+            "hidden": false,
+            "pin": "none"
+          },
+          {
+            "name": "Units",
+            "order": 3,
+            "width": 90,
+            "hidden": false,
+            "pin": "none",
+            "format": {
+              "type": "integer",
+              "decimals": 0,
+              "thousands": true,
+              "currencySymbol": "$",
+              "alignment": "auto",
+              "nullDisplay": ""
+            }
+          },
+          {
+            "name": "Revenue",
+            "order": 4,
+            "width": 120,
+            "hidden": false,
+            "pin": "none",
+            "format": {
+              "type": "currency",
+              "decimals": 2,
+              "thousands": true,
+              "currencySymbol": "$",
+              "alignment": "auto",
+              "nullDisplay": ""
+            }
+          },
+          {
+            "name": "Profit",
+            "order": 5,
+            "width": 120,
+            "hidden": false,
+            "pin": "none",
+            "format": {
+              "type": "currency",
+              "decimals": 2,
+              "thousands": true,
+              "currencySymbol": "$",
+              "alignment": "auto",
+              "nullDisplay": ""
+            }
+          }
+        ],
+        "filters": [],
+        "sorts": [],
+        "globalSearch": "",
+        "grouping": {
+          "columns": [],
+          "summaries": []
+        },
+        "freezePanes": {
+          "throughColumn": null,
+          "topRows": 0
+        },
+        "kanbanGridMode": "collapsed",
+        "openPanels": [
+          "Pivot",
+          "Chart"
+        ]
+      }
+    }
+  ],
+  "activeView": "Sales Pivot Analysis",
+  "openPanels": [
+    "Pivot",
+    "Chart"
+  ]
+}

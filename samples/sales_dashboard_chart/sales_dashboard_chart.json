@@ -1,0 +1,334 @@
+{
+  "version": 1,
+  "dataFile": "sales_dashboard.csv",
+  "generated": false,
+  "grid": {
+    "delimiter": ",",
+    "visibleRows": 15,
+    "rowHeightMode": "auto",
+    "overscan": 8
+  },
+  "columns": [
+    {
+      "name": "Order_ID",
+      "order": 0,
+      "width": 110,
+      "hidden": false,
+      "pin": "none"
+    },
+    {
+      "name": "Order_Date",
+      "order": 1,
+      "width": 120,
+      "hidden": false,
+      "pin": "none",
+      "format": {
+        "type": "date",
+        "decimals": 2,
+        "thousands": true,
+        "currencySymbol": "$",
+        "alignment": "auto",
+        "nullDisplay": ""
+      }
+    },
+    {
+      "name": "Month",
+      "order": 2,
+      "width": 100,
+      "hidden": false,
+      "pin": "none"
+    },
+    {
+      "name": "Region",
+      "order": 3,
+      "width": 100,
+      "hidden": false,
+      "pin": "none"
+    },
+    {
+      "name": "Salesperson",
+      "order": 4,
+      "width": 120,
+      "hidden": false,
+      "pin": "none"
+    },
+    {
+      "name": "Product_Category",
+      "order": 5,
+      "width": 150,
+      "hidden": false,
+      "pin": "none"
+    },
+    {
+      "name": "Product",
+      "order": 6,
+      "width": 160,
+      "hidden": false,
+      "pin": "none"
+    },
+    {
+      "name": "Units",
+      "order": 7,
+      "width": 90,
+      "hidden": false,
+      "pin": "none",
+      "format": {
+        "type": "integer",
+        "decimals": 0,
+        "thousands": true,
+        "currencySymbol": "$",
+        "alignment": "auto",
+        "nullDisplay": ""
+      }
+    },
+    {
+      "name": "Revenue",
+      "order": 8,
+      "width": 120,
+      "hidden": false,
+      "pin": "none",
+      "format": {
+        "type": "currency",
+        "decimals": 2,
+        "thousands": true,
+        "currencySymbol": "$",
+        "alignment": "auto",
+        "nullDisplay": ""
+      }
+    },
+    {
+      "name": "Cost",
+      "order": 9,
+      "width": 120,
+      "hidden": false,
+      "pin": "none",
+      "format": {
+        "type": "currency",
+        "decimals": 2,
+        "thousands": true,
+        "currencySymbol": "$",
+        "alignment": "auto",
+        "nullDisplay": ""
+      }
+    },
+    {
+      "name": "Profit",
+      "order": 10,
+      "width": 120,
+      "hidden": false,
+      "pin": "none",
+      "format": {
+        "type": "currency",
+        "decimals": 2,
+        "thousands": true,
+        "currencySymbol": "$",
+        "alignment": "auto",
+        "nullDisplay": ""
+      }
+    }
+  ],
+  "displayRules": [],
+  "dataValidation": [],
+  "filters": [],
+  "sorts": [],
+  "formulas": [],
+  "grouping": {
+    "columns": [],
+    "summaries": []
+  },
+  "dataQuality": null,
+  "derivedColumns": [],
+  "cellRenderers": [],
+  "actionColumns": [],
+  "analysis": {
+    "pivot": null,
+    "aggregate": {
+      "scope": "all",
+      "groups": [
+        "Region"
+      ],
+      "measures": [
+        {
+          "column": "Revenue",
+          "function": "sum"
+        },
+        {
+          "column": "Profit",
+          "function": "sum"
+        }
+      ],
+      "sort": {
+        "kind": "measure",
+        "column": "Revenue",
+        "function": "sum",
+        "direction": "desc"
+      }
+    },
+    "pivotChart": null,
+    "aggregateChart": {
+      "source": "aggregate",
+      "type": "bar",
+      "category": "Region",
+      "measure": null,
+      "series": [
+        "Sum(Revenue)",
+        "Sum(Profit)"
+      ],
+      "title": "Revenue and Profit by Region",
+      "showValues": true
+    },
+    "activeChartSource": "aggregate"
+  },
+  "views": [
+    {
+      "name": "Sales Dashboard",
+      "viewType": "grid",
+      "kanban": null,
+      "gantt": null,
+      "sequence": null,
+      "api": null,
+      "state": {
+        "columns": [
+          {
+            "name": "Order_ID",
+            "order": 0,
+            "width": 110,
+            "hidden": false,
+            "pin": "none"
+          },
+          {
+            "name": "Order_Date",
+            "order": 1,
+            "width": 120,
+            "hidden": false,
+            "pin": "none",
+            "format": {
+              "type": "date",
+              "decimals": 2,
+              "thousands": true,
+              "currencySymbol": "$",
+              "alignment": "auto",
+              "nullDisplay": ""
+            }
+          },
+          {
+            "name": "Month",
+            "order": 2,
+            "width": 100,
+            "hidden": false,
+            "pin": "none"
+          },
+          {
+            "name": "Region",
+            "order": 3,
+            "width": 100,
+            "hidden": false,
+            "pin": "none"
+          },
+          {
+            "name": "Salesperson",
+            "order": 4,
+            "width": 120,
+            "hidden": false,
+            "pin": "none"
+          },
+          {
+            "name": "Product_Category",
+            "order": 5,
+            "width": 150,
+            "hidden": false,
+            "pin": "none"
+          },
+          {
+            "name": "Product",
+            "order": 6,
+            "width": 160,
+            "hidden": false,
+            "pin": "none"
+          },
+          {
+            "name": "Units",
+            "order": 7,
+            "width": 90,
+            "hidden": false,
+            "pin": "none",
+            "format": {
+              "type": "integer",
+              "decimals": 0,
+              "thousands": true,
+              "currencySymbol": "$",
+              "alignment": "auto",
+              "nullDisplay": ""
+            }
+          },
+          {
+            "name": "Revenue",
+            "order": 8,
+            "width": 120,
+            "hidden": false,
+            "pin": "none",
+            "format": {
+              "type": "currency",
+              "decimals": 2,
+              "thousands": true,
+              "currencySymbol": "$",
+              "alignment": "auto",
+              "nullDisplay": ""
+            }
+          },
+          {
+            "name": "Cost",
+            "order": 9,
+            "width": 120,
+            "hidden": false,
+            "pin": "none",
+            "format": {
+              "type": "currency",
+              "decimals": 2,
+              "thousands": true,
+              "currencySymbol": "$",
+              "alignment": "auto",
+              "nullDisplay": ""
+            }
+          },
+          {
+            "name": "Profit",
+            "order": 10,
+            "width": 120,
+            "hidden": false,
+            "pin": "none",
+            "format": {
+              "type": "currency",
+              "decimals": 2,
+              "thousands": true,
+              "currencySymbol": "$",
+              "alignment": "auto",
+              "nullDisplay": ""
+            }
+          }
+        ],
+        "filters": [],
+        "sorts": [],
+        "globalSearch": "",
+        "grouping": {
+          "columns": [],
+          "summaries": []
+        },
+        "freezePanes": {
+          "throughColumn": null,
+          "topRows": 0
+        },
+        "kanbanGridMode": "collapsed",
+        "openPanels": [
+          "Aggregate",
+          "Chart"
+        ]
+      }
+    }
+  ],
+  "activeView": "Sales Dashboard",
+  "openPanels": [
+    "Aggregate",
+    "Chart"
+  ]
+}

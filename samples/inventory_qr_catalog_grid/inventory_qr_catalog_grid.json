@@ -1,72 +1,80 @@
 {
   "version": 1,
-  "dataFile": "basic_inventory.csv",
+  "dataFile": "inventory_qr_catalog.csv",
   "generated": false,
   "grid": {
     "delimiter": ",",
-    "visibleRows": 10,
+    "visibleRows": 15,
     "rowHeightMode": "auto",
     "overscan": 8
   },
   "columns": [
     {
-      "name": "Product_ID",
+      "name": "SKU",
       "order": 0,
-      "width": 140,
+      "width": 110,
       "hidden": false,
       "pin": "none"
     },
     {
-      "name": "Product_Name",
+      "name": "Product",
       "order": 1,
-      "width": 190,
+      "width": 180,
       "hidden": false,
       "pin": "none"
     },
     {
       "name": "Category",
       "order": 2,
-      "width": 140,
+      "width": 130,
+      "hidden": false,
+      "pin": "none"
+    },
+    {
+      "name": "Bin",
+      "order": 3,
+      "width": 100,
       "hidden": false,
       "pin": "none"
     },
     {
       "name": "Quantity",
-      "order": 3,
-      "width": 140,
-      "hidden": false,
-      "pin": "none"
-    },
-    {
-      "name": "Unit_Price",
       "order": 4,
-      "width": 140,
+      "width": 90,
       "hidden": false,
-      "pin": "none"
+      "pin": "none",
+      "format": {
+        "type": "integer",
+        "decimals": 0,
+        "thousands": true,
+        "currencySymbol": "$",
+        "alignment": "auto",
+        "nullDisplay": ""
+      }
     },
     {
       "name": "Status",
       "order": 5,
-      "width": 140,
+      "width": 120,
       "hidden": false,
       "pin": "none"
     },
     {
-      "name": "Last_Updated",
+      "name": "Product_URL",
       "order": 6,
-      "width": 140,
-      "hidden": false,
-      "pin": "none"
-    },
-    {
-      "name": "Website",
-      "order": 7,
-      "width": 250,
+      "width": 150,
       "hidden": false,
       "pin": "none"
     }
   ],
-  "displayRules": [],
+  "displayRules": [
+    {
+      "column": "Quantity",
+      "operator": "=",
+      "value": "0",
+      "style": "highlight"
+    }
+  ],
   "dataValidation": [],
   "filters": [],
   "sorts": [],
@@ -77,7 +85,18 @@
   },
   "dataQuality": null,
   "derivedColumns": [],
-  "cellRenderers": [],
+  "cellRenderers": [
+    {
+      "column": "Status",
+      "type": "badge",
+      "badgeStyleCode": "CELL(\"Status\") === \"Available\" ? \"success\" : CELL(\"Status\") === \"Low Stock\" ? \"warning\" : \"highlight\""
+    },
+    {
+      "column": "Product_URL",
+      "type": "qr",
+      "qrSize": 72
+    }
+  ],
   "actionColumns": [],
   "analysis": {
     "pivot": null,
@@ -88,7 +107,7 @@
   },
   "views": [
     {
-      "name": "Inventory Grid",
+      "name": "Inventory QR Catalog",
       "viewType": "grid",
       "kanban": null,
       "gantt": null,
@@ -97,58 +116,59 @@
       "state": {
         "columns": [
           {
-            "name": "Product_ID",
+            "name": "SKU",
             "order": 0,
-            "width": 140,
+            "width": 110,
             "hidden": false,
             "pin": "none"
           },
           {
-            "name": "Product_Name",
+            "name": "Product",
             "order": 1,
-            "width": 190,
+            "width": 180,
             "hidden": false,
             "pin": "none"
           },
           {
             "name": "Category",
             "order": 2,
-            "width": 140,
+            "width": 130,
+            "hidden": false,
+            "pin": "none"
+          },
+          {
+            "name": "Bin",
+            "order": 3,
+            "width": 100,
             "hidden": false,
             "pin": "none"
           },
           {
             "name": "Quantity",
-            "order": 3,
-            "width": 140,
-            "hidden": false,
-            "pin": "none"
-          },
-          {
-            "name": "Unit_Price",
             "order": 4,
-            "width": 140,
+            "width": 90,
             "hidden": false,
-            "pin": "none"
+            "pin": "none",
+            "format": {
+              "type": "integer",
+              "decimals": 0,
+              "thousands": true,
+              "currencySymbol": "$",
+              "alignment": "auto",
+              "nullDisplay": ""
+            }
           },
           {
             "name": "Status",
             "order": 5,
-            "width": 140,
+            "width": 120,
             "hidden": false,
             "pin": "none"
           },
           {
-            "name": "Last_Updated",
+            "name": "Product_URL",
             "order": 6,
-            "width": 140,
-            "hidden": false,
-            "pin": "none"
-          },
-          {
-            "name": "Website",
-            "order": 7,
-            "width": 250,
+            "width": 150,
             "hidden": false,
             "pin": "none"
           }
@@ -165,10 +185,14 @@
           "topRows": 0
         },
         "kanbanGridMode": "collapsed",
-        "openPanels": []
+        "openPanels": [
+          "Cell Renderers"
+        ]
       }
     }
   ],
-  "activeView": "Inventory Grid",
-  "openPanels": []
+  "activeView": "Inventory QR Catalog",
+  "openPanels": [
+    "Cell Renderers"
+  ]
 }

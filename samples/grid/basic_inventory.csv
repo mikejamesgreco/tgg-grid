@@ -1,9 +1,0 @@
-Product_ID,Product_Name,Category,Quantity,Unit_Price,Status,Last_Updated,Website
-P-1001,Desk Lamp,Office,18,29.95,Active,2026-08-15,https://example.com/products/P-1001
-P-1002,Notebook,Office,125,4.5,Active,2026-08-18,https://example.com/products/P-1002
-P-1003,Travel Mug,Kitchen,42,18.75,Low Stock,2026-08-21,https://example.com/products/P-1003
-P-1004,USB-C Cable,Electronics,0,12.99,Out of Stock,2026-08-22,https://example.com/products/P-1004
-P-1005,Wireless Mouse,Electronics,31,34.99,Active,2026-08-25,https://example.com/products/P-1005
-P-1006,Storage Bin,Home,64,16.25,Active,2026-08-26,https://example.com/products/P-1006
-P-1007,Water Bottle,Outdoor,9,22.0,Low Stock,2026-08-28,https://example.com/products/P-1007
-P-1008,LED Flashlight,Outdoor,27,24.5,Active,2026-08-30,https://example.com/products/P-1008

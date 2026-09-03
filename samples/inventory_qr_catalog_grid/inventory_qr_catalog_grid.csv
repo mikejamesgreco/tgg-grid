@@ -1,0 +1,13 @@
+SKU,Product,Category,Bin,Quantity,Status,Product_URL
+SKU-1001,Display Hub,Electronics,A-01-01,42,Available,https://example.com/products/display-hub
+SKU-1002,USB-C Dock,Electronics,A-01-02,18,Low Stock,https://example.com/products/usb-c-dock
+SKU-1003,Ergo Chair,Office,B-03-04,27,Available,https://example.com/products/ergo-chair
+SKU-1004,Standing Desk,Office,B-03-05,9,Low Stock,https://example.com/products/standing-desk
+SKU-1005,Webcam,Accessories,C-02-01,64,Available,https://example.com/products/webcam
+SKU-1006,Headset,Accessories,C-02-02,0,Out of Stock,https://example.com/products/headset
+SKU-1007,Portable SSD,Storage,D-01-03,31,Available,https://example.com/products/portable-ssd
+SKU-1008,NAS Drive,Storage,D-01-04,7,Low Stock,https://example.com/products/nas-drive
+SKU-1009,Conference Speaker,Electronics,A-02-01,14,Available,https://example.com/products/conference-speaker
+SKU-1010,Laptop Stand,Accessories,C-03-01,53,Available,https://example.com/products/laptop-stand
+SKU-1011,Keyboard,Accessories,C-03-02,4,Low Stock,https://example.com/products/keyboard
+SKU-1012,Document Scanner,Office,B-04-01,0,Out of Stock,https://example.com/products/document-scanner

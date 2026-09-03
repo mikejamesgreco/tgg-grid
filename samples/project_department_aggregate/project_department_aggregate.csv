@@ -1,0 +1,31 @@
+Project_ID,Department,Project,Owner,Status,Budget,Actual,Hours,Completion_Pct
+PRJ-201,Engineering,Engineering Initiative 1,Bailey,Planning,50000.00,43520.39,1146.1,15
+PRJ-202,Engineering,Engineering Initiative 2,Emery,Active,58500.00,48025.62,1596.7,30
+PRJ-203,Engineering,Engineering Initiative 3,Bailey,At Risk,67000.00,74564.90,929.4,45
+PRJ-204,Engineering,Engineering Initiative 4,Alex,Active,75500.00,68002.62,1516.4,60
+PRJ-205,Engineering,Engineering Initiative 5,Emery,Active,84000.00,68968.23,477.6,75
+PRJ-206,Engineering,Engineering Initiative 6,Chris,Complete,92500.00,98159.47,1282.0,100
+PRJ-207,Operations,Operations Initiative 1,Bailey,Planning,62000.00,61712.53,481.4,15
+PRJ-208,Operations,Operations Initiative 2,Frankie,Active,70500.00,55496.30,560.3,30
+PRJ-209,Operations,Operations Initiative 3,Bailey,Active,79000.00,65479.30,1559.6,45
+PRJ-210,Operations,Operations Initiative 4,Harper,Active,87500.00,84396.08,1074.6,60
+PRJ-211,Operations,Operations Initiative 5,Gray,Active,96000.00,75897.18,989.8,75
+PRJ-212,Operations,Operations Initiative 6,Gray,Complete,104500.00,114429.29,1474.1,100
+PRJ-213,Finance,Finance Initiative 1,Bailey,Planning,74000.00,63239.76,915.5,15
+PRJ-214,Finance,Finance Initiative 2,Frankie,Active,82500.00,77624.46,1031.3,30
+PRJ-215,Finance,Finance Initiative 3,Gray,Active,91000.00,74907.42,1342.1,45
+PRJ-216,Finance,Finance Initiative 4,Bailey,At Risk,99500.00,107094.71,1551.8,60
+PRJ-217,Finance,Finance Initiative 5,Frankie,Active,108000.00,107891.26,1601.2,75
+PRJ-218,Finance,Finance Initiative 6,Harper,Complete,116500.00,130354.93,1045.4,100
+PRJ-219,Marketing,Marketing Initiative 1,Frankie,Planning,86000.00,71299.13,850.7,15
+PRJ-220,Marketing,Marketing Initiative 2,Gray,At Risk,94500.00,101179.99,1056.7,30
+PRJ-221,Marketing,Marketing Initiative 3,Bailey,Active,103000.00,105651.47,1488.3,45
+PRJ-222,Marketing,Marketing Initiative 4,Frankie,Active,111500.00,87613.74,721.6,60
+PRJ-223,Marketing,Marketing Initiative 5,Bailey,Active,120000.00,98327.27,860.4,75
+PRJ-224,Marketing,Marketing Initiative 6,Emery,Complete,128500.00,143787.98,809.5,100
+PRJ-225,Customer Success,Customer Success Initiative 1,Devon,Planning,98000.00,83670.22,1268.9,15
+PRJ-226,Customer Success,Customer Success Initiative 2,Gray,At Risk,106500.00,113213.27,1524.5,30
+PRJ-227,Customer Success,Customer Success Initiative 3,Emery,Active,115000.00,116431.22,677.3,45
+PRJ-228,Customer Success,Customer Success Initiative 4,Bailey,Active,123500.00,104661.71,1331.2,60
+PRJ-229,Customer Success,Customer Success Initiative 5,Bailey,Active,132000.00,130681.21,1294.7,75
+PRJ-230,Customer Success,Customer Success Initiative 6,Alex,Complete,140500.00,145552.10,682.0,100

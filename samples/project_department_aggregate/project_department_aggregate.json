@@ -1,0 +1,304 @@
+{
+  "version": 1,
+  "dataFile": "project_department_summary.csv",
+  "generated": false,
+  "grid": {
+    "delimiter": ",",
+    "visibleRows": 15,
+    "rowHeightMode": "auto",
+    "overscan": 8
+  },
+  "columns": [
+    {
+      "name": "Project_ID",
+      "order": 0,
+      "width": 110,
+      "hidden": false,
+      "pin": "none"
+    },
+    {
+      "name": "Department",
+      "order": 1,
+      "width": 140,
+      "hidden": false,
+      "pin": "none"
+    },
+    {
+      "name": "Project",
+      "order": 2,
+      "width": 220,
+      "hidden": false,
+      "pin": "none"
+    },
+    {
+      "name": "Owner",
+      "order": 3,
+      "width": 110,
+      "hidden": false,
+      "pin": "none"
+    },
+    {
+      "name": "Status",
+      "order": 4,
+      "width": 110,
+      "hidden": false,
+      "pin": "none"
+    },
+    {
+      "name": "Budget",
+      "order": 5,
+      "width": 120,
+      "hidden": false,
+      "pin": "none",
+      "format": {
+        "type": "currency",
+        "decimals": 2,
+        "thousands": true,
+        "currencySymbol": "$",
+        "alignment": "auto",
+        "nullDisplay": ""
+      }
+    },
+    {
+      "name": "Actual",
+      "order": 6,
+      "width": 120,
+      "hidden": false,
+      "pin": "none",
+      "format": {
+        "type": "currency",
+        "decimals": 2,
+        "thousands": true,
+        "currencySymbol": "$",
+        "alignment": "auto",
+        "nullDisplay": ""
+      }
+    },
+    {
+      "name": "Hours",
+      "order": 7,
+      "width": 100,
+      "hidden": false,
+      "pin": "none",
+      "format": {
+        "type": "number",
+        "decimals": 1,
+        "thousands": true,
+        "currencySymbol": "$",
+        "alignment": "auto",
+        "nullDisplay": ""
+      }
+    },
+    {
+      "name": "Completion_Pct",
+      "order": 8,
+      "width": 120,
+      "hidden": false,
+      "pin": "none",
+      "format": {
+        "type": "percentage",
+        "decimals": 0,
+        "thousands": true,
+        "currencySymbol": "$",
+        "alignment": "auto",
+        "nullDisplay": ""
+      }
+    }
+  ],
+  "displayRules": [],
+  "dataValidation": [],
+  "filters": [],
+  "sorts": [],
+  "formulas": [],
+  "grouping": {
+    "columns": [],
+    "summaries": []
+  },
+  "dataQuality": null,
+  "derivedColumns": [],
+  "cellRenderers": [
+    {
+      "column": "Status",
+      "type": "badge",
+      "badgeStyleCode": "CELL(\"Status\") === \"Complete\" ? \"success\" : CELL(\"Status\") === \"At Risk\" ? \"warning\" : CELL(\"Status\") === \"Active\" ? \"info\" : \"muted\""
+    }
+  ],
+  "actionColumns": [],
+  "analysis": {
+    "pivot": null,
+    "aggregate": {
+      "scope": "all",
+      "groups": [
+        "Department"
+      ],
+      "measures": [
+        {
+          "column": "Budget",
+          "function": "sum"
+        },
+        {
+          "column": "Actual",
+          "function": "sum"
+        },
+        {
+          "column": "Hours",
+          "function": "sum"
+        },
+        {
+          "column": "Completion_Pct",
+          "function": "avg"
+        }
+      ],
+      "sort": {
+        "kind": "measure",
+        "column": "Actual",
+        "function": "sum",
+        "direction": "desc"
+      }
+    },
+    "pivotChart": null,
+    "aggregateChart": {
+      "source": "aggregate",
+      "type": "bar",
+      "category": "Department",
+      "measure": null,
+      "series": [
+        "Sum(Budget)",
+        "Sum(Actual)"
+      ],
+      "title": "Budget vs Actual by Department",
+      "showValues": true
+    },
+    "activeChartSource": "aggregate"
+  },
+  "views": [
+    {
+      "name": "Project Department Summary",
+      "viewType": "grid",
+      "kanban": null,
+      "gantt": null,
+      "sequence": null,
+      "api": null,
+      "state": {
+        "columns": [
+          {
+            "name": "Project_ID",
+            "order": 0,
+            "width": 110,
+            "hidden": false,
+            "pin": "none"
+          },
+          {
+            "name": "Department",
+            "order": 1,
+            "width": 140,
+            "hidden": false,
+            "pin": "none"
+          },
+          {
+            "name": "Project",
+            "order": 2,
+            "width": 220,
+            "hidden": false,
+            "pin": "none"
+          },
+          {
+            "name": "Owner",
+            "order": 3,
+            "width": 110,
+            "hidden": false,
+            "pin": "none"
+          },
+          {
+            "name": "Status",
+            "order": 4,
+            "width": 110,
+            "hidden": false,
+            "pin": "none"
+          },
+          {
+            "name": "Budget",
+            "order": 5,
+            "width": 120,
+            "hidden": false,
+            "pin": "none",
+            "format": {
+              "type": "currency",
+              "decimals": 2,
+              "thousands": true,
+              "currencySymbol": "$",
+              "alignment": "auto",
+              "nullDisplay": ""
+            }
+          },
+          {
+            "name": "Actual",
+            "order": 6,
+            "width": 120,
+            "hidden": false,
+            "pin": "none",
+            "format": {
+              "type": "currency",
+              "decimals": 2,
+              "thousands": true,
+              "currencySymbol": "$",
+              "alignment": "auto",
+              "nullDisplay": ""
+            }
+          },
+          {
+            "name": "Hours",
+            "order": 7,
+            "width": 100,
+            "hidden": false,
+            "pin": "none",
+            "format": {
+              "type": "number",
+              "decimals": 1,
+              "thousands": true,
+              "currencySymbol": "$",
+              "alignment": "auto",
+              "nullDisplay": ""
+            }
+          },
+          {
+            "name": "Completion_Pct",
+            "order": 8,
+            "width": 120,
+            "hidden": false,
+            "pin": "none",
+            "format": {
+              "type": "percentage",
+              "decimals": 0,
+              "thousands": true,
+              "currencySymbol": "$",
+              "alignment": "auto",
+              "nullDisplay": ""
+            }
+          }
+        ],
+        "filters": [],
+        "sorts": [],
+        "globalSearch": "",
+        "grouping": {
+          "columns": [],
+          "summaries": []
+        },
+        "freezePanes": {
+          "throughColumn": null,
+          "topRows": 0
+        },
+        "kanbanGridMode": "collapsed",
+        "openPanels": [
+          "Aggregate",
+          "Chart"
+        ]
+      }
+    }
+  ],
+  "activeView": "Project Department Summary",
+  "openPanels": [
+    "Aggregate",
+    "Chart"
+  ]
+}
