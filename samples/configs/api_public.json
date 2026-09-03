@@ -1,0 +1,20 @@
+{
+  "sample": "../api-explorer/public_api_headers_query.csv",
+  "purpose": "Starter API Explorer mapping using only public APIs",
+  "viewType": "api",
+  "api": {
+    "service": "Service_Name",
+    "operation": "Operation_Name",
+    "method": "Method",
+    "baseUrl": "Base_URL",
+    "path": "Path",
+    "description": "Description",
+    "requestSchema": "Request_Schema",
+    "responseSchema": "Response_Schema",
+    "requestHeaders": "Request_Headers",
+    "queryParams": "Query_Params",
+    "authType": "Auth_Type",
+    "environments": [],
+    "activeEnvironment": ""
+  }
+}

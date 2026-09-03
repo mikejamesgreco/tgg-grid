@@ -1,0 +1,16 @@
+{
+  "sample": "../gantt/project_schedule.csv",
+  "purpose": "Starter Gantt mapping",
+  "viewType": "gantt",
+  "gantt": {
+    "title": "Task_Name",
+    "start": "Start_Date",
+    "end": "End_Date",
+    "groupBy": "Phase",
+    "progress": "Progress",
+    "owner": "Owner",
+    "status": "Status",
+    "id": "Task_ID",
+    "scale": "week"
+  }
+}

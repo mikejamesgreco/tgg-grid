@@ -1,0 +1,10 @@
+{
+  "sample": "../grid/basic_inventory.csv",
+  "purpose": "Starter Grid sample configuration notes",
+  "viewType": "grid",
+  "suggestedFormatting": {
+    "Quantity": "Integer",
+    "Unit_Price": "Currency",
+    "Last_Updated": "Date"
+  }
+}

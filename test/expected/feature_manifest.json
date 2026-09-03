@@ -1,0 +1,29 @@
+{
+  "baseline": "v1147",
+  "application": "tgg-grid.html",
+  "requiredViewTypes": [
+    "grid",
+    "kanban",
+    "gantt",
+    "sequence",
+    "api"
+  ],
+  "requiredFeatureMarkers": [
+    "Source View",
+    "Save Data",
+    "Save Config",
+    "Help Center",
+    "sequenceFragmentType",
+    "apiJsonPointerGet",
+    "apiParsePairs",
+    "apiApplyQueryParams",
+    "apiApplyCustomHeaders"
+  ],
+  "publicFixtures": [
+    "basic_inventory.csv",
+    "project_board.csv",
+    "project_schedule.csv",
+    "web_checkout_flow.csv",
+    "public_api_headers_query.csv"
+  ]
+}

@@ -1,0 +1,17 @@
+{
+  "sample": "../sequence/web_checkout_flow.csv",
+  "purpose": "Starter Sequence mapping",
+  "viewType": "sequence",
+  "sequence": {
+    "step": "Step",
+    "from": "From",
+    "to": "To",
+    "message": "Message",
+    "type": "Type",
+    "group": "Group",
+    "spacing": "auto",
+    "activations": "receiver",
+    "showSteps": true,
+    "showLegend": true
+  }
+}

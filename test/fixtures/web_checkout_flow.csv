@@ -1,0 +1,24 @@
+Step,From,To,Message,Type,Group
+1,User,Browser,Open storefront,request,Browse
+2,Browser,Catalog API,GET /products,request,Browse
+3,Catalog API,Browser,200 product list,response,Browse
+4,Browser,Browser,Render product cards,self,Browse
+5,User,Browser,Add item to cart,request,Checkout
+6,Browser,Cart API,POST /cart/items,request,Checkout
+7,Cart API,Browser,201 cart updated,response,Checkout
+8,Browser,Payment API,Authorize payment,request,Checkout
+9,Payment API,Browser,Authorization approved,response,Checkout
+10,Browser,,payment approved,alt,Checkout
+11,Browser,Order API,Create order,request,Checkout
+12,Order API,Browser,Order created,response,Checkout
+13,,,payment declined,else,Checkout
+14,Browser,User,Show payment error,response,Checkout
+15,,,,end,Checkout
+16,Browser,,send confirmation when email available,opt,Notify
+17,Browser,Notification API,Queue confirmation,async,Notify
+18,,,,end,Notify
+19,Notification API,,retry delivery up to 3 times,loop,Notify
+20,Notification API,Mail Provider,Send message,async,Notify
+21,Mail Provider,Notification API,Accepted,response,Notify
+22,,,,end,Notify
+23,Browser,User,Display confirmation,response,Complete

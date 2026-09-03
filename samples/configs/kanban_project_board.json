@@ -1,0 +1,12 @@
+{
+  "sample": "../kanban/project_board.csv",
+  "purpose": "Starter Kanban mapping",
+  "viewType": "kanban",
+  "kanban": {
+    "lane": "Status",
+    "title": "Title",
+    "subtitle": "Owner",
+    "description": "Description",
+    "badge": "Priority"
+  }
+}
