@@ -91,7 +91,13 @@
         "badge": "Priority",
         "density": "standard",
         "descriptionLines": "3",
-        "boardHeight": "auto"
+        "boardHeight": "auto",
+        "laneOrder": [
+          "Backlog",
+          "In Progress",
+          "Review",
+          "Done"
+        ]
       },
       "gantt": null,
       "sequence": null,

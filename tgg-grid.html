@@ -1874,6 +1874,16 @@ body.tgg-kanban-flow .grid-card.kanban-layout .kanban-board[data-board-height="a
 .kanban-more{width:100%;padding:6px 8px;font-size:10px;background:#f8fafc}
 .kanban-empty{padding:24px;text-align:center;color:#64748b;border:1px dashed #cbd5e1;border-radius:8px;background:#fff;min-width:340px}
 .kanban-lane-warning{flex:0 0 285px;padding:12px;border:1px dashed #f59e0b;border-radius:10px;background:#fffbeb;color:#92400e;font-size:11px;line-height:1.4}
+.kanban-lane-order-wrap{margin:8px 0 12px;border:1px solid #d8dee6;border-radius:8px;background:#f8fafc;overflow:hidden}
+.kanban-lane-order-head{display:flex;align-items:center;gap:8px;padding:7px 9px;border-bottom:1px solid #e2e8f0;background:#fff}
+.kanban-lane-order-head strong{font-size:11px;color:#334155}.kanban-lane-order-head .spacer{flex:1}
+.kanban-lane-order-list{display:flex;flex-direction:column;gap:5px;padding:7px;max-height:260px;overflow:auto}
+.kanban-lane-order-row{display:grid;grid-template-columns:28px minmax(0,1fr) 30px 30px;gap:5px;align-items:center;padding:5px 6px;border:1px solid #e2e8f0;border-radius:7px;background:#fff}
+.kanban-lane-rank{font-size:10px;font-weight:800;color:#64748b;text-align:center;font-variant-numeric:tabular-nums}
+.kanban-lane-value{min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;font-size:11px;color:#1e293b}
+.kanban-lane-order-row button{width:30px;height:28px;padding:0;font-size:12px;font-weight:800}
+.kanban-lane-order-empty{padding:9px;font-size:11px;color:#64748b}
+
 #viewTypeSelect{width:92px}
 
 /* v1120: Saved View name and View Type are one visual control group. */
@@ -2847,6 +2857,14 @@ label{font-size:10.5px !important;}
 <div class="muted-help"><b>Kanban is a Saved View presentation.</b> The same CSV rows remain the source of truth. Choose a low-cardinality lane field such as Status or Stage, then map fields onto cards. v1117 is presentation-only: cards do not drag/edit data yet.</div>
 <div class="rule-builder">
   <div class="field"><label>Lane / Group By</label><select id="kanbanLaneColumn"></select></div>
+  <div class="kanban-lane-order-wrap">
+    <div class="kanban-lane-order-head">
+      <strong>Lane Order</strong><span class="spacer"></span>
+      <button id="kanbanResetLaneOrderBtn" type="button">Reset to Data Order</button>
+    </div>
+    <div id="kanbanLaneOrderList" class="kanban-lane-order-list"></div>
+  </div>
+  <div class="muted-help">Lane order is independent from row sorting. Use ↑ / ↓ to arrange the distinct lane values. New values not yet ranked are appended to the end automatically.</div>
   <div class="field"><label>Card Title</label><select id="kanbanTitleColumn"></select></div>
   <div class="field"><label>Subtitle (optional)</label><select id="kanbanSubtitleColumn"></select></div>
   <div class="field"><label>Description (optional)</label><select id="kanbanDescriptionColumn"></select></div>
@@ -3220,7 +3238,10 @@ ID         → Task_ID</pre>
 <table><tr><th>Control</th><th>Behavior</th></tr><tr><td>Source View</td><td>Protected built-in reset view. It is generated from the loaded CSV, is never stored in the config, and cannot be renamed, deleted, or overwritten.</td></tr><tr><td>View selector</td><td>Switch between Source View and named saved views. Returning to Source View reapplies the raw-CSV baseline.</td></tr><tr><td>Save View</td><td>Update the selected named view from the current grid state and clear its modified flag. Disabled for Source View.</td></tr><tr><td>Save As</td><td>Create a new named view from the current grid state, including a working state started from Source View.</td></tr><tr><td>Rename</td><td>Rename the active named view. Disabled for Source View.</td></tr><tr><td>Delete</td><td>Delete the active named view. Disabled for Source View.</td></tr><tr><td>Save Config</td><td>Persists named views only. In supporting secure browser contexts it opens the native Save As picker, initially targeting the browser's Downloads location, so you can choose the filename/location or select an existing <code>.json</code> or legacy <code>.cfg</code> to overwrite. New configs default to <code>.json</code> to avoid browser warnings associated with uncommon file extensions. Source View is regenerated automatically from the CSV and therefore cannot be corrupted by config contents.</td></tr></table>
 <div class="help-note"><b>View-level vs workbook-level:</b> saved views capture a <b>View Type</b> plus presentation state. Grid views capture column layout, filters, sorts, global search, active grouping, freeze panes, and open control panels. Kanban views additionally persist Lane, Card Title, Subtitle, Description, Badge, density, description-line, board-height, and Data Grid Collapsed/Peek/Full settings. Gantt views persist Task, Start, End, Group By, Progress, Owner, Status, ID, timeline scale, and the shared Data Grid Collapsed/Peek/Full setting. Derived Columns, renderers, Action Columns, Formula Actions, Data Quality definitions, Pivot/Aggregate definitions, and chart definitions remain workbook/config-level and are available from every saved view.</div>
 <div class="help-tip"><b>Compatibility:</b> Older configs without a View Type continue to load as Grid views. Their named views are added after the protected Source View. Source View is always the initial active view so there is a predictable reset point regardless of config complexity.</div>
-<div class="help-note"><b>Presentation switching:</b> changing a named view between Grid, Kanban, and Gantt changes only its presentation definition. It does not duplicate or reload the CSV rows. Save View persists the selected presentation and its view-specific mappings.</div></section><section class="help-topic" id="help-kanban" data-help-keywords="kanban board cards lanes saved view view type status stage title subtitle description badge low cardinality incremental cards"><h2>Kanban Saved Views<button class="help-open-control" type="button" data-control-title="Kanban View">Open control</button></h2>
+<div class="help-note"><b>Presentation switching:</b> changing a named view between Grid, Kanban, and Gantt changes only its presentation definition. It does not duplicate or reload the CSV rows. Save View persists the selected presentation and its view-specific mappings.</div></section><section class="help-topic" id="help-kanban" data-help-keywords="kanban board cards lanes lane order swimlane saved view view type status stage title subtitle description badge low cardinality incremental cards"><h2>Kanban Saved Views<button class="help-open-control" type="button" data-control-title="Kanban View">Open control</button></h2>
+<h3>Lane order</h3>
+<p>After choosing <b>Lane / Group By</b>, TGG lists the distinct lane values directly below the mapping. Use ↑ and ↓ to define their presentation order. Saved lane order is independent from ordinary row sorting, so sorting the current view changes card order inside lanes without reshuffling the lanes. New values are appended to the end; <b>Reset to Data Order</b> restores physical CSV first-occurrence order.</p>
+
 <p>v1117 generalizes Saved Views into presentation types. <b>Grid</b> remains the default. A named Saved View may instead use <b>Kanban</b>, while the physical CSV rows remain unchanged and shared by every view.</p>
 <p>Set <b>View Type → Kanban</b>, then map <b>Lane / Group By</b>, <b>Card Title</b>, and optional Subtitle, Description, and Badge fields. Physical, Calculated, and JS Derived columns are supported; Action Columns are excluded.</p><div class="help-note"><b>Lane meaning:</b> every distinct value in the Lane / Group By column becomes a Kanban lane, and each participating source row becomes a card in that lane. Repeated values are expected; the board is grouping records, not declaring duplicates.</div>
 <p>Kanban uses the active Saved View's current filters and sorts to decide which rows participate and their source order. Clicking a card selects its source record and opens a structured row detail in the Results Window. Ctrl/Cmd-click toggles card row selection.</p>
@@ -3681,7 +3702,7 @@ POST    200, 401, 403, 400, 500, ...</pre>
 <div aria-atomic="true" aria-live="polite" id="toastHost"></div>
 
 <script>
-const TGG_VERSION='v1149';
+const TGG_VERSION='v1150';
 const TGG_PRODUCT_NAME='TGG Grid';
 let rowHeight=30,rowHeightMode='auto';
 const $=id=>document.getElementById(id);
@@ -4475,7 +4496,7 @@ const dataQualityScope=$('dataQualityScope'),dataQualityRules=$('dataQualityRule
       addDataQualityRuleBtn=$('addDataQualityRuleBtn'),runDataQualityBtn=$('runDataQualityBtn'),
       clearDataQualityBtn=$('clearDataQualityBtn'),dataQualityResults=$('dataQualityResults'),
       dataQualityProgress=$('dataQualityProgress'),dataQualityStatus=$('dataQualityStatus'),cancelDataQualityBtn=$('cancelDataQualityBtn');
-const kanbanLaneColumn=$('kanbanLaneColumn'),kanbanTitleColumn=$('kanbanTitleColumn'),kanbanSubtitleColumn=$('kanbanSubtitleColumn'),kanbanDescriptionColumn=$('kanbanDescriptionColumn'),kanbanBadgeColumn=$('kanbanBadgeColumn'),kanbanDensity=$('kanbanDensity'),kanbanDescriptionLines=$('kanbanDescriptionLines'),kanbanBoardHeight=$('kanbanBoardHeight'),applyKanbanSettingsBtn=$('applyKanbanSettingsBtn'),kanbanSettingsStatus=$('kanbanSettingsStatus');
+const kanbanLaneColumn=$('kanbanLaneColumn'),kanbanLaneOrderList=$('kanbanLaneOrderList'),kanbanResetLaneOrderBtn=$('kanbanResetLaneOrderBtn'),kanbanTitleColumn=$('kanbanTitleColumn'),kanbanSubtitleColumn=$('kanbanSubtitleColumn'),kanbanDescriptionColumn=$('kanbanDescriptionColumn'),kanbanBadgeColumn=$('kanbanBadgeColumn'),kanbanDensity=$('kanbanDensity'),kanbanDescriptionLines=$('kanbanDescriptionLines'),kanbanBoardHeight=$('kanbanBoardHeight'),applyKanbanSettingsBtn=$('applyKanbanSettingsBtn'),kanbanSettingsStatus=$('kanbanSettingsStatus');
 const ganttTitleColumn=$('ganttTitleColumn'),ganttStartColumn=$('ganttStartColumn'),ganttEndColumn=$('ganttEndColumn'),ganttGroupColumn=$('ganttGroupColumn'),ganttProgressColumn=$('ganttProgressColumn'),ganttOwnerColumn=$('ganttOwnerColumn'),ganttStatusColumn=$('ganttStatusColumn'),ganttIdColumn=$('ganttIdColumn'),ganttScale=$('ganttScale'),applyGanttSettingsBtn=$('applyGanttSettingsBtn'),ganttSettingsStatus=$('ganttSettingsStatus');
 const sequenceStepColumn=$('sequenceStepColumn'),sequenceFromColumn=$('sequenceFromColumn'),sequenceToColumn=$('sequenceToColumn'),sequenceMessageColumn=$('sequenceMessageColumn'),sequenceTypeColumn=$('sequenceTypeColumn'),sequenceGroupColumn=$('sequenceGroupColumn'),sequenceDensity=$('sequenceDensity'),sequenceParticipantSpacing=$('sequenceParticipantSpacing'),sequenceHeight=$('sequenceHeight'),sequenceActivations=$('sequenceActivations'),sequenceShowSteps=$('sequenceShowSteps'),sequenceShowLegend=$('sequenceShowLegend'),sequenceTypeLegend=$('sequenceTypeLegend'),applySequenceSettingsBtn=$('applySequenceSettingsBtn'),sequenceSettingsStatus=$('sequenceSettingsStatus');
 const apiServiceColumn=$('apiServiceColumn'),apiOperationColumn=$('apiOperationColumn'),apiMethodColumn=$('apiMethodColumn'),apiBaseUrlColumn=$('apiBaseUrlColumn'),apiPathColumn=$('apiPathColumn'),apiDescriptionColumn=$('apiDescriptionColumn'),apiRequestSchemaColumn=$('apiRequestSchemaColumn'),apiResponseSchemaColumn=$('apiResponseSchemaColumn'),apiRequestHeadersColumn=$('apiRequestHeadersColumn'),apiQueryParamsColumn=$('apiQueryParamsColumn'),apiAuthTypeColumn=$('apiAuthTypeColumn'),applyApiSettingsBtn=$('applyApiSettingsBtn'),apiSettingsStatus=$('apiSettingsStatus'),apiEnvironmentSelect=$('apiEnvironmentSelect'),apiEnvironmentList=$('apiEnvironmentList'),newApiEnvironmentBtn=$('newApiEnvironmentBtn'),apiEnvironmentName=$('apiEnvironmentName'),apiEnvironmentBaseUrl=$('apiEnvironmentBaseUrl'),saveApiEnvironmentBtn=$('saveApiEnvironmentBtn'),clearApiEnvironmentBtn=$('clearApiEnvironmentBtn'),apiEnvironmentStatus=$('apiEnvironmentStatus');
@@ -4521,7 +4542,8 @@ const heapUsedStat=$('heapUsedStat'),heapLimitStat=$('heapLimitStat'),
 let rows=[],columns=[],columnByName=Object.create(null),totalRows=0,totalCols=0,visibleRows=10,overscan=8,delimiter=',',viewIndex=null,pool=[],lastStart=-1,scrollScheduled=false,profileOutput=null,dataQualityOutput=null,groupingActive=false,groupingTree=null,groupedDisplay=[],groupingCollapsedPaths=new Set(),groupingBuildMs=0,importedFormulas=[],derivedColumnDefs=[],derivedEditId=null,calculatedEditId=null,cellRendererDefs=[],actionColumnDefs=[],actionEditId=null,suppressSchemaRender=false;
 const SOURCE_VIEW_NAME='Source View';
 let savedViews=[],activeViewName=SOURCE_VIEW_NAME,suppressViewSwitch=false,viewDirty=false,suppressViewDirty=false;
-let activeViewType='grid',currentKanbanConfig={lane:'',title:'',subtitle:'',description:'',badge:'',density:'standard',descriptionLines:'3',boardHeight:'auto'};
+let activeViewType='grid',currentKanbanConfig={lane:'',laneOrder:[],title:'',subtitle:'',description:'',badge:'',density:'standard',descriptionLines:'3',boardHeight:'auto'};
+let kanbanLaneOrderDraft=[],kanbanLaneOrderDraftColumn='';
 let currentSequenceConfig={step:'',from:'',to:'',message:'',type:'',group:'',density:'standard',height:'medium',activations:'receivers',showSteps:'yes',showLegend:'yes'};
 let currentApiConfig={service:'',operation:'',method:'',baseUrl:'',path:'',description:'',requestSchema:'',responseSchema:'',requestHeaders:'',queryParams:'',authType:'',environments:[],activeEnvironment:''};
 let sequenceGroupStops=[];
@@ -13801,7 +13823,8 @@ function normalizeKanbanDefinition(def){
   const density=['compact','standard','comfortable'].includes(String(x.density||'').toLowerCase())?String(x.density).toLowerCase():'standard';
   const descriptionLines=['0','1','2','3','full'].includes(String(x.descriptionLines??x.description_lines??''))?String(x.descriptionLines??x.description_lines):'3';
   const boardHeight=['compact','medium','tall','auto'].includes(String(x.boardHeight||x.board_height||'').toLowerCase())?String(x.boardHeight||x.board_height).toLowerCase():'auto';
-  return {lane:String(x.lane||x.groupBy||''),title:String(x.title||''),subtitle:String(x.subtitle||''),description:String(x.description||''),badge:String(x.badge||''),density,descriptionLines,boardHeight};
+  const laneOrder=Array.isArray(x.laneOrder||x.lane_order)?[...new Set((x.laneOrder||x.lane_order).map(v=>String(v??'').trim()))]:[];
+  return {lane:String(x.lane||x.groupBy||''),laneOrder,title:String(x.title||''),subtitle:String(x.subtitle||''),description:String(x.description||''),badge:String(x.badge||''),density,descriptionLines,boardHeight};
 }
 function currentKanbanDefinition(){return normalizeKanbanDefinition(currentKanbanConfig)}
 function kanbanEligibleColumns(){return columns.filter(c=>!isActionColumn(c))}
@@ -13825,6 +13848,68 @@ function ensureKanbanDefaults(){
   if(!currentKanbanConfig.description)currentKanbanConfig.description=guessKanbanColumn([/description/i,/detail/i,/notes?/i,/summary/i],new Set());
   if(!currentKanbanConfig.badge)currentKanbanConfig.badge=guessKanbanColumn([/priority/i,/severity/i,/category/i,/type$/i],new Set());
 }
+
+function kanbanDistinctLaneValues(columnName){
+  const col=kanbanColumn(columnName);if(!col)return [];
+  const seen=new Set(),out=[];
+  for(let sr=0;sr<rows.length;sr++){
+    const raw=String(valueAt(sr,col)??'').trim();
+    if(!seen.has(raw)){seen.add(raw);out.push(raw)}
+  }
+  return out;
+}
+function reconcileKanbanLaneOrder(savedOrder,columnName){
+  const distinct=kanbanDistinctLaneValues(columnName);
+  if(!distinct.length)return [];
+  const available=new Set(distinct),out=[],used=new Set();
+  for(const v of Array.isArray(savedOrder)?savedOrder:[]){
+    const s=String(v??'').trim();
+    if(available.has(s)&&!used.has(s)){out.push(s);used.add(s)}
+  }
+  for(const v of distinct)if(!used.has(v)){out.push(v);used.add(v)}
+  return out;
+}
+function renderKanbanLaneOrderEditor(){
+  if(!kanbanLaneOrderList)return;
+  kanbanLaneOrderList.replaceChildren();
+  const enabled=!!rows.length&&!sourceViewActive()&&activeViewType==='kanban'&&!!kanbanLaneColumn?.value;
+  if(kanbanResetLaneOrderBtn)kanbanResetLaneOrderBtn.disabled=!enabled;
+  if(!enabled){
+    const e=document.createElement('div');e.className='kanban-lane-order-empty';e.textContent='Choose a Lane / Group By column to configure lane order.';kanbanLaneOrderList.appendChild(e);return;
+  }
+  const selected=kanbanLaneColumn.value;
+  if(kanbanLaneOrderDraftColumn!==selected){
+    const seed=selected===currentKanbanConfig.lane?currentKanbanConfig.laneOrder:[];
+    kanbanLaneOrderDraft=reconcileKanbanLaneOrder(seed,selected);
+    kanbanLaneOrderDraftColumn=selected;
+  }else{
+    kanbanLaneOrderDraft=reconcileKanbanLaneOrder(kanbanLaneOrderDraft,selected);
+  }
+  if(!kanbanLaneOrderDraft.length){
+    const e=document.createElement('div');e.className='kanban-lane-order-empty';e.textContent='No distinct lane values are present in the loaded data.';kanbanLaneOrderList.appendChild(e);return;
+  }
+  kanbanLaneOrderDraft.forEach((value,index)=>{
+    const row=document.createElement('div');row.className='kanban-lane-order-row';row.dataset.value=value;
+    const rank=document.createElement('span');rank.className='kanban-lane-rank';rank.textContent=String(index+1);
+    const label=document.createElement('span');label.className='kanban-lane-value';label.textContent=value||'(Unassigned)';label.title=value||'(Unassigned)';
+    const up=document.createElement('button');up.type='button';up.textContent='↑';up.title='Move lane up';up.disabled=index===0;
+    const down=document.createElement('button');down.type='button';down.textContent='↓';down.title='Move lane down';down.disabled=index===kanbanLaneOrderDraft.length-1;
+    up.onclick=()=>moveKanbanLaneOrder(index,-1);down.onclick=()=>moveKanbanLaneOrder(index,1);
+    row.append(rank,label,up,down);kanbanLaneOrderList.appendChild(row);
+  });
+}
+function moveKanbanLaneOrder(index,delta){
+  const next=index+delta;if(index<0||next<0||index>=kanbanLaneOrderDraft.length||next>=kanbanLaneOrderDraft.length)return;
+  [kanbanLaneOrderDraft[index],kanbanLaneOrderDraft[next]]=[kanbanLaneOrderDraft[next],kanbanLaneOrderDraft[index]];
+  renderKanbanLaneOrderEditor();
+}
+function resetKanbanLaneOrderToData(){
+  const selected=kanbanLaneColumn?.value||'';
+  kanbanLaneOrderDraft=kanbanDistinctLaneValues(selected);
+  kanbanLaneOrderDraftColumn=selected;
+  renderKanbanLaneOrderEditor();
+  showToast('Kanban lane order reset to physical data order');
+}
 function populateKanbanColumnOptions(){
   setSelectOptionsByColumns(kanbanLaneColumn,{optional:false,preserve:false});setSelectOptionsByColumns(kanbanTitleColumn,{optional:false,preserve:false});
   setSelectOptionsByColumns(kanbanSubtitleColumn,{optional:true,preserve:false});setSelectOptionsByColumns(kanbanDescriptionColumn,{optional:true,preserve:false});setSelectOptionsByColumns(kanbanBadgeColumn,{optional:true,preserve:false});
@@ -13834,18 +13919,21 @@ function populateKanbanColumnOptions(){
   if(kanbanDensity)kanbanDensity.value=currentKanbanConfig.density||'standard';
   if(kanbanDescriptionLines)kanbanDescriptionLines.value=String(currentKanbanConfig.descriptionLines||'3');
   if(kanbanBoardHeight)kanbanBoardHeight.value=currentKanbanConfig.boardHeight||'auto';
+  kanbanLaneOrderDraftColumn='';
+  renderKanbanLaneOrderEditor();
   updateKanbanControlState();
 }
 function updateKanbanControlState(){
   const enabled=!!rows.length&&!sourceViewActive()&&activeViewType==='kanban';
-  for(const el of [kanbanLaneColumn,kanbanTitleColumn,kanbanSubtitleColumn,kanbanDescriptionColumn,kanbanBadgeColumn,kanbanDensity,kanbanDescriptionLines,kanbanBoardHeight,applyKanbanSettingsBtn])if(el)el.disabled=!enabled;
+  for(const el of [kanbanLaneColumn,kanbanTitleColumn,kanbanSubtitleColumn,kanbanDescriptionColumn,kanbanBadgeColumn,kanbanDensity,kanbanDescriptionLines,kanbanBoardHeight,applyKanbanSettingsBtn,kanbanResetLaneOrderBtn])if(el)el.disabled=!enabled;
+  if(kanbanLaneOrderList)for(const b of kanbanLaneOrderList.querySelectorAll('button'))b.disabled=!enabled||b.disabled;
   if(kanbanSettingsStatus){
     if(sourceViewActive())kanbanSettingsStatus.textContent='Source View is always Grid. Use Save As to create a named view, then choose Kanban.';
     else if(activeViewType!=='kanban')kanbanSettingsStatus.textContent='Set the active Saved View Type to Kanban to enable card mappings.';
-    else kanbanSettingsStatus.textContent='Kanban uses the current Saved View filters/sorts. Lane and Title are required; Subtitle, Description, and Badge are optional.';
+    else kanbanSettingsStatus.textContent='Kanban uses current Saved View filters/sorts for cards, while configured Lane Order remains fixed. Lane and Title are required; Subtitle, Description, and Badge are optional.';
   }
 }
-function readKanbanControls(){return {lane:kanbanLaneColumn?.value||'',title:kanbanTitleColumn?.value||'',subtitle:kanbanSubtitleColumn?.value||'',description:kanbanDescriptionColumn?.value||'',badge:kanbanBadgeColumn?.value||'',density:kanbanDensity?.value||'standard',descriptionLines:kanbanDescriptionLines?.value||'3',boardHeight:kanbanBoardHeight?.value||'auto'}}
+function readKanbanControls(){const lane=kanbanLaneColumn?.value||'';return {lane,laneOrder:reconcileKanbanLaneOrder(kanbanLaneOrderDraftColumn===lane?kanbanLaneOrderDraft:[],lane),title:kanbanTitleColumn?.value||'',subtitle:kanbanSubtitleColumn?.value||'',description:kanbanDescriptionColumn?.value||'',badge:kanbanBadgeColumn?.value||'',density:kanbanDensity?.value||'standard',descriptionLines:kanbanDescriptionLines?.value||'3',boardHeight:kanbanBoardHeight?.value||'auto'}}
 function applyKanbanDisplaySettings(){
   const cfg=currentKanbanDefinition();
   if(kanbanSurface){
@@ -13858,7 +13946,7 @@ function applyKanbanSettingsFromUi(){
   if(sourceViewActive()){showToast('Create a named view before configuring Kanban');return}
   if(activeViewType!=='kanban'){showToast('Set View Type to Kanban first');return}
   const next=normalizeKanbanDefinition(readKanbanControls());if(!next.lane||!next.title){showToast('Kanban requires Lane and Card Title');return}
-  currentKanbanConfig=next;applyKanbanDisplaySettings();markViewDirty('Kanban mappings/display changed');scheduleKanbanRender(true);showToast('Kanban settings applied');
+  currentKanbanConfig=next;kanbanLaneOrderDraft=[...next.laneOrder];kanbanLaneOrderDraftColumn=next.lane;renderKanbanLaneOrderEditor();applyKanbanDisplaySettings();markViewDirty('Kanban mappings/display/lane order changed');scheduleKanbanRender(true);showToast('Kanban settings applied');
 }
 function setViewTypeFromUi(){
   if(sourceViewActive()){if(viewTypeSelect)viewTypeSelect.value='grid';showToast('Source View is always Grid');return}
@@ -13925,14 +14013,21 @@ async function renderKanbanView(token){
   const count=getViewCount(),lanes=new Map(),ordered=[];if(kanbanBuildStatus)kanbanBuildStatus.textContent=`Building lanes from ${count.toLocaleString()} rows…`;
   const chunk=5000;
   for(let i=0;i<count;i++){
-    if(token!==kanbanBuildToken||activeViewType!=='kanban')return;const sr=sourceRow(i),raw=String(valueAt(sr,cols.lane)??'').trim(),key=raw||'__TGG_UNASSIGNED__',label=raw||'Unassigned';let lane=lanes.get(key);if(!lane){lane={key,label,rows:[]};lanes.set(key,lane);ordered.push(lane)}lane.rows.push(sr);
+    if(token!==kanbanBuildToken||activeViewType!=='kanban')return;const sr=sourceRow(i),raw=String(valueAt(sr,cols.lane)??'').trim(),key=raw||'__TGG_UNASSIGNED__',label=raw||'Unassigned';let lane=lanes.get(key);if(!lane){lane={key,raw,label,rows:[]};lanes.set(key,lane);ordered.push(lane)}lane.rows.push(sr);
     if(i&&i%chunk===0){if(kanbanBuildStatus)kanbanBuildStatus.textContent=`Building lanes: ${i.toLocaleString()} / ${count.toLocaleString()} rows`;await nextPaint()}
   }
-  if(token!==kanbanBuildToken)return;kanbanLaneData=ordered;const visible=ordered.slice(0,KANBAN_MAX_RENDERED_LANES);
+  if(token!==kanbanBuildToken)return;
+  const explicit=reconcileKanbanLaneOrder(cfg.laneOrder,cfg.lane),rank=new Map(explicit.map((v,i)=>[v,i]));
+  ordered.sort((a,b)=>{
+    const ar=rank.has(a.raw)?rank.get(a.raw):Number.MAX_SAFE_INTEGER;
+    const br=rank.has(b.raw)?rank.get(b.raw):Number.MAX_SAFE_INTEGER;
+    return ar-br;
+  });
+  kanbanLaneData=ordered;const visible=ordered.slice(0,KANBAN_MAX_RENDERED_LANES);
   for(const lane of visible){const el=document.createElement('section');el.className='kanban-lane';const head=document.createElement('div');head.className='kanban-lane-head';const title=document.createElement('div');title.className='kanban-lane-title';title.textContent=lane.label;title.title=lane.label;const cnt=document.createElement('span');cnt.className='kanban-lane-count';cnt.textContent=lane.rows.length.toLocaleString();head.append(title,cnt);const list=document.createElement('div');list.className='kanban-card-list';renderKanbanLaneCards(list,lane,cfg,cols);el.append(head,list);kanbanBoard.appendChild(el)}
   if(ordered.length>KANBAN_MAX_RENDERED_LANES){const warn=document.createElement('div');warn.className='kanban-lane-warning';warn.innerHTML=`<b>Lane rendering capped for browser safety.</b><br>${ordered.length.toLocaleString()} distinct lane values were found. The first ${KANBAN_MAX_RENDERED_LANES.toLocaleString()} lanes are rendered. Kanban works best with low-cardinality fields such as Status, Stage, or Phase.`;kanbanBoard.appendChild(warn)}
   if(!ordered.length){const e=document.createElement('div');e.className='kanban-empty';e.textContent='No rows are present in the current Saved View.';kanbanBoard.appendChild(e)}
-  if(kanbanViewTitle)kanbanViewTitle.textContent=`${activeViewName} — Kanban`;if(kanbanBuildStatus)kanbanBuildStatus.textContent=`${count.toLocaleString()} row${count===1?'':'s'} • ${ordered.length.toLocaleString()} lane${ordered.length===1?'':'s'} • ${cfg.density} density • cards rendered incrementally`;
+  if(kanbanViewTitle)kanbanViewTitle.textContent=`${activeViewName} — Kanban`;if(kanbanBuildStatus)kanbanBuildStatus.textContent=`${count.toLocaleString()} row${count===1?'':'s'} • ${ordered.length.toLocaleString()} lane${ordered.length===1?'':'s'} • ${cfg.laneOrder.length?'custom lane order':'data lane order'} • ${cfg.density} density • cards rendered incrementally`;
   log(`Kanban view "${activeViewName}" built ${ordered.length.toLocaleString()} lane(s) from ${count.toLocaleString()} current-view row(s); initial card DOM is capped at ${KANBAN_INITIAL_CARDS} per lane and ${KANBAN_MAX_RENDERED_LANES} lanes.`);
 }
 function scheduleKanbanRender(resetLimits=false){
@@ -14050,7 +14145,7 @@ function applyViewColumnState(defs){
 function applySourceViewState({silent=false}={}){
   if(!rows.length)return false;
   discardSelectedOnlyViewState();
-  activeViewType='grid';kanbanGridMode='collapsed';currentKanbanConfig={lane:'',title:'',subtitle:'',description:'',badge:'',density:'standard',descriptionLines:'3',boardHeight:'auto'};currentGanttConfig={title:'',start:'',end:'',groupBy:'',progress:'',owner:'',status:'',id:'',scale:'week'};currentSequenceConfig={step:'',from:'',to:'',message:'',type:'',group:'',density:'standard',height:'medium',activations:'receivers',showSteps:'yes',showLegend:'yes'};currentApiConfig={service:'',operation:'',method:'',baseUrl:'',path:'',description:'',requestSchema:'',responseSchema:'',requestHeaders:'',queryParams:'',authType:'',environments:[],activeEnvironment:''};kanbanBuildToken++;ganttBuildToken++;sequenceBuildToken++;apiBuildToken++;
+  activeViewType='grid';kanbanGridMode='collapsed';currentKanbanConfig={lane:'',laneOrder:[],title:'',subtitle:'',description:'',badge:'',density:'standard',descriptionLines:'3',boardHeight:'auto'};currentGanttConfig={title:'',start:'',end:'',groupBy:'',progress:'',owner:'',status:'',id:'',scale:'week'};currentSequenceConfig={step:'',from:'',to:'',message:'',type:'',group:'',density:'standard',height:'medium',activations:'receivers',showSteps:'yes',showLegend:'yes'};currentApiConfig={service:'',operation:'',method:'',baseUrl:'',path:'',description:'',requestSchema:'',responseSchema:'',requestHeaders:'',queryParams:'',authType:'',environments:[],activeEnvironment:''};kanbanBuildToken++;ganttBuildToken++;sequenceBuildToken++;apiBuildToken++;
   suppressViewDirty=true;
   commitActiveEdit();
   resetCellSelection(false);
@@ -14940,6 +15035,8 @@ if(viewTypeSelect)viewTypeSelect.onchange=setViewTypeFromUi;
 if(kanbanGridToggleBtn)kanbanGridToggleBtn.onclick=toggleKanbanGrid;
 if(kanbanGridFullBtn)kanbanGridFullBtn.onclick=toggleKanbanGridFull;
 for(const el of [kanbanDensity,kanbanDescriptionLines,kanbanBoardHeight])if(el)el.onchange=()=>{if(activeViewType==='kanban'&&!sourceViewActive())applyKanbanSettingsFromUi()};
+if(kanbanLaneColumn)kanbanLaneColumn.onchange=()=>{kanbanLaneOrderDraft=[];kanbanLaneOrderDraftColumn='';renderKanbanLaneOrderEditor()};
+if(kanbanResetLaneOrderBtn)kanbanResetLaneOrderBtn.onclick=resetKanbanLaneOrderToData;
 if(applyKanbanSettingsBtn)applyKanbanSettingsBtn.onclick=()=>runUiTask('Building Kanban view…',applyKanbanSettingsFromUi);
 if(applyGanttSettingsBtn)applyGanttSettingsBtn.onclick=()=>runUiTask('Building Gantt view…',applyGanttSettingsFromUi);
 if(applySequenceSettingsBtn)applySequenceSettingsBtn.onclick=()=>runUiTask('Building Sequence diagram…',applySequenceSettingsFromUi);
@@ -15061,6 +15158,7 @@ log('Startup validation: v1146 fixes Sequence fragment closing-boundary geometry
 log('Startup validation: v1147 adds API Explorer custom Request Headers and Query Parameters with optional CSV mappings, JSON/shorthand parsing, repeated query values, runtime editing, request assembly integration, backward-compatible config persistence, and updated Help.');
 log('Startup validation: v1148 clarifies config-schema validation for mapping-only JSON files and documents that reusable sample configs must be complete Save Config workspace definitions whose physical columns match the loaded CSV.');
 log('Startup validation: v1149 generalizes the sample-config guidance across Grid, Kanban, Gantt, Sequence, and API Explorer; the public repository sample pack was rebuilt so every JSON sample is a complete Save Config definition matched to its CSV.');
+log('Startup validation: v1150 adds persistent Kanban Lane Order controls with distinct-value ranking, move up/down, Reset to Data Order, sort-independent lane rendering, automatic append of newly discovered lane values, and Help Center documentation.');
 log('Startup validation: Derived Columns v1061 adds read-only JavaScript virtual columns, CELL/NUM/DATE/ISBLANK row API, config persistence, derived-to-derived references, lazy caching, and integration with grid display/filter/sort/group/profile/data-quality/aggregate/pivot/chart source data.');
 log('Startup validation: Derived Columns v1062 fixes schema-change lifecycle ordering so a Derived Column cannot trigger rendering against an old virtual-row pool while being added, edited, removed, or restored from config.');
 log('Startup validation: Derived Columns v1063 persists and rehydrates derived-column order, width, hidden/pin state, and formatting independently from the physical CSV schema contract.');
