@@ -1,17 +1,163 @@
 {
-  "sample": "../sequence/web_checkout_flow.csv",
-  "purpose": "Starter Sequence mapping",
-  "viewType": "sequence",
-  "sequence": {
-    "step": "Step",
-    "from": "From",
-    "to": "To",
-    "message": "Message",
-    "type": "Type",
-    "group": "Group",
-    "spacing": "auto",
-    "activations": "receiver",
-    "showSteps": true,
-    "showLegend": true
-  }
+  "version": 1,
+  "dataFile": "web_checkout_flow.csv",
+  "generated": false,
+  "grid": {
+    "delimiter": ",",
+    "visibleRows": 10,
+    "rowHeightMode": "auto",
+    "overscan": 8
+  },
+  "columns": [
+    {
+      "name": "Step",
+      "order": 0,
+      "width": 140,
+      "hidden": false,
+      "pin": "none"
+    },
+    {
+      "name": "From",
+      "order": 1,
+      "width": 140,
+      "hidden": false,
+      "pin": "none"
+    },
+    {
+      "name": "To",
+      "order": 2,
+      "width": 140,
+      "hidden": false,
+      "pin": "none"
+    },
+    {
+      "name": "Message",
+      "order": 3,
+      "width": 260,
+      "hidden": false,
+      "pin": "none"
+    },
+    {
+      "name": "Type",
+      "order": 4,
+      "width": 140,
+      "hidden": false,
+      "pin": "none"
+    },
+    {
+      "name": "Group",
+      "order": 5,
+      "width": 140,
+      "hidden": false,
+      "pin": "none"
+    }
+  ],
+  "displayRules": [],
+  "dataValidation": [],
+  "filters": [],
+  "sorts": [],
+  "formulas": [],
+  "grouping": {
+    "columns": [],
+    "summaries": []
+  },
+  "dataQuality": null,
+  "derivedColumns": [],
+  "cellRenderers": [],
+  "actionColumns": [],
+  "analysis": {
+    "pivot": null,
+    "aggregate": null,
+    "pivotChart": null,
+    "aggregateChart": null,
+    "activeChartSource": "aggregate"
+  },
+  "views": [
+    {
+      "name": "Web Checkout Sequence",
+      "viewType": "sequence",
+      "kanban": null,
+      "gantt": null,
+      "sequence": {
+        "step": "Step",
+        "from": "From",
+        "to": "To",
+        "message": "Message",
+        "type": "Type",
+        "group": "Group",
+        "density": "standard",
+        "participantSpacing": "auto",
+        "height": "medium",
+        "activations": "receivers",
+        "showSteps": "yes",
+        "showLegend": "yes"
+      },
+      "api": null,
+      "state": {
+        "columns": [
+          {
+            "name": "Step",
+            "order": 0,
+            "width": 140,
+            "hidden": false,
+            "pin": "none"
+          },
+          {
+            "name": "From",
+            "order": 1,
+            "width": 140,
+            "hidden": false,
+            "pin": "none"
+          },
+          {
+            "name": "To",
+            "order": 2,
+            "width": 140,
+            "hidden": false,
+            "pin": "none"
+          },
+          {
+            "name": "Message",
+            "order": 3,
+            "width": 260,
+            "hidden": false,
+            "pin": "none"
+          },
+          {
+            "name": "Type",
+            "order": 4,
+            "width": 140,
+            "hidden": false,
+            "pin": "none"
+          },
+          {
+            "name": "Group",
+            "order": 5,
+            "width": 140,
+            "hidden": false,
+            "pin": "none"
+          }
+        ],
+        "filters": [],
+        "sorts": [],
+        "globalSearch": "",
+        "grouping": {
+          "columns": [],
+          "summaries": []
+        },
+        "freezePanes": {
+          "throughColumn": null,
+          "topRows": 0
+        },
+        "kanbanGridMode": "collapsed",
+        "openPanels": [
+          "Sequence View"
+        ]
+      }
+    }
+  ],
+  "activeView": "Web Checkout Sequence",
+  "openPanels": [
+    "Sequence View"
+  ]
 }
