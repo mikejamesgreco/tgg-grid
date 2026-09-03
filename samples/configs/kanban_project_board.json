@@ -1,12 +1,173 @@
 {
-  "sample": "../kanban/project_board.csv",
-  "purpose": "Starter Kanban mapping",
-  "viewType": "kanban",
-  "kanban": {
-    "lane": "Status",
-    "title": "Title",
-    "subtitle": "Owner",
-    "description": "Description",
-    "badge": "Priority"
-  }
+  "version": 1,
+  "dataFile": "project_board.csv",
+  "generated": false,
+  "grid": {
+    "delimiter": ",",
+    "visibleRows": 10,
+    "rowHeightMode": "auto",
+    "overscan": 8
+  },
+  "columns": [
+    {
+      "name": "Task_ID",
+      "order": 0,
+      "width": 140,
+      "hidden": false,
+      "pin": "none"
+    },
+    {
+      "name": "Title",
+      "order": 1,
+      "width": 220,
+      "hidden": false,
+      "pin": "none"
+    },
+    {
+      "name": "Status",
+      "order": 2,
+      "width": 140,
+      "hidden": false,
+      "pin": "none"
+    },
+    {
+      "name": "Owner",
+      "order": 3,
+      "width": 140,
+      "hidden": false,
+      "pin": "none"
+    },
+    {
+      "name": "Priority",
+      "order": 4,
+      "width": 140,
+      "hidden": false,
+      "pin": "none"
+    },
+    {
+      "name": "Description",
+      "order": 5,
+      "width": 280,
+      "hidden": false,
+      "pin": "none"
+    },
+    {
+      "name": "Due_Date",
+      "order": 6,
+      "width": 140,
+      "hidden": false,
+      "pin": "none"
+    }
+  ],
+  "displayRules": [],
+  "dataValidation": [],
+  "filters": [],
+  "sorts": [],
+  "formulas": [],
+  "grouping": {
+    "columns": [],
+    "summaries": []
+  },
+  "dataQuality": null,
+  "derivedColumns": [],
+  "cellRenderers": [],
+  "actionColumns": [],
+  "analysis": {
+    "pivot": null,
+    "aggregate": null,
+    "pivotChart": null,
+    "aggregateChart": null,
+    "activeChartSource": "aggregate"
+  },
+  "views": [
+    {
+      "name": "Project Board",
+      "viewType": "kanban",
+      "kanban": {
+        "lane": "Status",
+        "title": "Title",
+        "subtitle": "Owner",
+        "description": "Description",
+        "badge": "Priority",
+        "density": "standard",
+        "descriptionLines": "3",
+        "boardHeight": "auto"
+      },
+      "gantt": null,
+      "sequence": null,
+      "api": null,
+      "state": {
+        "columns": [
+          {
+            "name": "Task_ID",
+            "order": 0,
+            "width": 140,
+            "hidden": false,
+            "pin": "none"
+          },
+          {
+            "name": "Title",
+            "order": 1,
+            "width": 220,
+            "hidden": false,
+            "pin": "none"
+          },
+          {
+            "name": "Status",
+            "order": 2,
+            "width": 140,
+            "hidden": false,
+            "pin": "none"
+          },
+          {
+            "name": "Owner",
+            "order": 3,
+            "width": 140,
+            "hidden": false,
+            "pin": "none"
+          },
+          {
+            "name": "Priority",
+            "order": 4,
+            "width": 140,
+            "hidden": false,
+            "pin": "none"
+          },
+          {
+            "name": "Description",
+            "order": 5,
+            "width": 280,
+            "hidden": false,
+            "pin": "none"
+          },
+          {
+            "name": "Due_Date",
+            "order": 6,
+            "width": 140,
+            "hidden": false,
+            "pin": "none"
+          }
+        ],
+        "filters": [],
+        "sorts": [],
+        "globalSearch": "",
+        "grouping": {
+          "columns": [],
+          "summaries": []
+        },
+        "freezePanes": {
+          "throughColumn": null,
+          "topRows": 0
+        },
+        "kanbanGridMode": "collapsed",
+        "openPanels": [
+          "Kanban View"
+        ]
+      }
+    }
+  ],
+  "activeView": "Project Board",
+  "openPanels": [
+    "Kanban View"
+  ]
 }

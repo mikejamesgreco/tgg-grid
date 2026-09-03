@@ -1,7 +1,7 @@
 Task_ID,Title,Status,Owner,Priority,Description,Due_Date
-T-001,Define project scope,Done,Alex,High,Agree on goals and boundaries.,2026-09-01
-T-002,Draft wireframes,In Progress,Jordan,High,Create first-pass screen layouts.,2026-09-05
-T-003,Prepare sample data,In Progress,Casey,Medium,Create safe public demonstration data.,2026-09-06
 T-004,Review accessibility,Backlog,Morgan,Medium,Check keyboard and contrast behavior.,2026-09-10
 T-005,Write release notes,Backlog,Taylor,Low,Summarize user-visible changes.,2026-09-12
+T-002,Draft wireframes,In Progress,Jordan,High,Create first-pass screen layouts.,2026-09-05
+T-003,Prepare sample data,In Progress,Casey,Medium,Create safe public demonstration data.,2026-09-06
 T-006,Run smoke tests,Review,Riley,High,Verify core workflows before release.,2026-09-08
+T-001,Define project scope,Done,Alex,High,Agree on goals and boundaries.,2026-09-01
