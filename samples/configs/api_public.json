@@ -1,20 +1,234 @@
 {
-  "sample": "../api-explorer/public_api_headers_query.csv",
-  "purpose": "Starter API Explorer mapping using only public APIs",
-  "viewType": "api",
-  "api": {
-    "service": "Service_Name",
-    "operation": "Operation_Name",
-    "method": "Method",
-    "baseUrl": "Base_URL",
-    "path": "Path",
-    "description": "Description",
-    "requestSchema": "Request_Schema",
-    "responseSchema": "Response_Schema",
-    "requestHeaders": "Request_Headers",
-    "queryParams": "Query_Params",
-    "authType": "Auth_Type",
-    "environments": [],
-    "activeEnvironment": ""
-  }
+  "version": 1,
+  "dataFile": "public_api_headers_query.csv",
+  "generated": false,
+  "grid": {
+    "delimiter": ",",
+    "visibleRows": 10,
+    "rowHeightMode": "auto",
+    "overscan": 8
+  },
+  "columns": [
+    {
+      "name": "Service_Name",
+      "order": 0,
+      "width": 140,
+      "hidden": false,
+      "pin": "none"
+    },
+    {
+      "name": "Operation_Name",
+      "order": 1,
+      "width": 140,
+      "hidden": false,
+      "pin": "none"
+    },
+    {
+      "name": "Method",
+      "order": 2,
+      "width": 140,
+      "hidden": false,
+      "pin": "none"
+    },
+    {
+      "name": "Base_URL",
+      "order": 3,
+      "width": 140,
+      "hidden": false,
+      "pin": "none"
+    },
+    {
+      "name": "Path",
+      "order": 4,
+      "width": 140,
+      "hidden": false,
+      "pin": "none"
+    },
+    {
+      "name": "Description",
+      "order": 5,
+      "width": 140,
+      "hidden": false,
+      "pin": "none"
+    },
+    {
+      "name": "Request_Schema",
+      "order": 6,
+      "width": 140,
+      "hidden": false,
+      "pin": "none"
+    },
+    {
+      "name": "Response_Schema",
+      "order": 7,
+      "width": 140,
+      "hidden": false,
+      "pin": "none"
+    },
+    {
+      "name": "Request_Headers",
+      "order": 8,
+      "width": 140,
+      "hidden": false,
+      "pin": "none"
+    },
+    {
+      "name": "Query_Params",
+      "order": 9,
+      "width": 140,
+      "hidden": false,
+      "pin": "none"
+    },
+    {
+      "name": "Auth_Type",
+      "order": 10,
+      "width": 140,
+      "hidden": false,
+      "pin": "none"
+    }
+  ],
+  "displayRules": [],
+  "dataValidation": [],
+  "filters": [],
+  "sorts": [],
+  "formulas": [],
+  "grouping": {
+    "columns": [],
+    "summaries": []
+  },
+  "dataQuality": null,
+  "derivedColumns": [],
+  "cellRenderers": [],
+  "actionColumns": [],
+  "analysis": {
+    "pivot": null,
+    "aggregate": null,
+    "pivotChart": null,
+    "aggregateChart": null,
+    "activeChartSource": "aggregate"
+  },
+  "views": [
+    {
+      "name": "Public API Explorer",
+      "viewType": "api",
+      "kanban": null,
+      "gantt": null,
+      "sequence": null,
+      "api": {
+        "service": "Service_Name",
+        "operation": "Operation_Name",
+        "method": "Method",
+        "baseUrl": "Base_URL",
+        "path": "Path",
+        "description": "Description",
+        "requestSchema": "Request_Schema",
+        "responseSchema": "Response_Schema",
+        "requestHeaders": "Request_Headers",
+        "queryParams": "Query_Params",
+        "authType": "Auth_Type",
+        "environments": [],
+        "activeEnvironment": ""
+      },
+      "state": {
+        "columns": [
+          {
+            "name": "Service_Name",
+            "order": 0,
+            "width": 140,
+            "hidden": false,
+            "pin": "none"
+          },
+          {
+            "name": "Operation_Name",
+            "order": 1,
+            "width": 140,
+            "hidden": false,
+            "pin": "none"
+          },
+          {
+            "name": "Method",
+            "order": 2,
+            "width": 140,
+            "hidden": false,
+            "pin": "none"
+          },
+          {
+            "name": "Base_URL",
+            "order": 3,
+            "width": 140,
+            "hidden": false,
+            "pin": "none"
+          },
+          {
+            "name": "Path",
+            "order": 4,
+            "width": 140,
+            "hidden": false,
+            "pin": "none"
+          },
+          {
+            "name": "Description",
+            "order": 5,
+            "width": 140,
+            "hidden": false,
+            "pin": "none"
+          },
+          {
+            "name": "Request_Schema",
+            "order": 6,
+            "width": 140,
+            "hidden": false,
+            "pin": "none"
+          },
+          {
+            "name": "Response_Schema",
+            "order": 7,
+            "width": 140,
+            "hidden": false,
+            "pin": "none"
+          },
+          {
+            "name": "Request_Headers",
+            "order": 8,
+            "width": 140,
+            "hidden": false,
+            "pin": "none"
+          },
+          {
+            "name": "Query_Params",
+            "order": 9,
+            "width": 140,
+            "hidden": false,
+            "pin": "none"
+          },
+          {
+            "name": "Auth_Type",
+            "order": 10,
+            "width": 140,
+            "hidden": false,
+            "pin": "none"
+          }
+        ],
+        "filters": [],
+        "sorts": [],
+        "globalSearch": "",
+        "grouping": {
+          "columns": [],
+          "summaries": []
+        },
+        "freezePanes": {
+          "throughColumn": null,
+          "topRows": 0
+        },
+        "kanbanGridMode": "collapsed",
+        "openPanels": [
+          "API Explorer View"
+        ]
+      }
+    }
+  ],
+  "activeView": "Public API Explorer",
+  "openPanels": [
+    "API Explorer View"
+  ]
 }
