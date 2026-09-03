@@ -10,6 +10,12 @@ Load a CSV, work with the data locally in your browser, and optionally save a TG
 
 > **Your CSV is the data. Your TGG configuration is the workspace.**
 
+## Run TGG Grid
+
+**[▶ Run TGG Grid in your browser](https://mikejamesgreco.github.io/tgg-grid/)**
+
+No installation is required. The GitHub Pages version runs TGG directly in your browser, just like opening the standalone `tgg-grid.html` file locally. Your normal CSV workflow remains local-first; files you load are processed in the browser unless you explicitly use a feature that communicates with an external service, such as API Explorer.
+
 ---
 
 ## Why TGG Grid?
@@ -60,7 +66,7 @@ TGG Grid is designed around a few simple principles:
 
 No installation is required.
 
-1. Open `tgg-grid.html` in a modern browser.
+1. Open the **[hosted TGG Grid](https://mikejamesgreco.github.io/tgg-grid/)** or open `tgg-grid.html` locally in a modern browser.
 2. Choose **Load Data**.
 3. Select a CSV file.
 4. Start working with the data.
@@ -430,7 +436,8 @@ The repository is intentionally simple.
 ```text
 tgg-grid/
 │
-├── tgg-grid.html
+├── index.html              # GitHub Pages launcher
+├── tgg-grid.html           # Standalone TGG application
 │
 ├── samples/
 │   ├── grid/
