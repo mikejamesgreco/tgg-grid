@@ -3537,7 +3537,7 @@ Orders,Create Order,POST,https://api.example.com,/orders,"{""X-Trace"":""demo""}
 <h2>API Explorer / Swagger-like Saved View</h2><div class="help-note"><b>CSV shape:</b> one row per REST operation. Required roles are Service, Operation, HTTP Method, Base URL, and Path. Column names themselves are flexible because you map your CSV columns to these roles. See <b>CSV Shape &amp; Required Roles by View Type</b> for the cross-view comparison.</div>
 <p><b>API Explorer</b> turns REST-operation rows in the current CSV into an interactive Swagger-like documentation and invocation page. It is a Saved View presentation: the CSV remains the source of truth and the ordinary Data Grid can still be shown in Collapsed, Peek, or Full mode.</p>
 <h3>Recommended CSV columns</h3>
-<div class="help-note"><b>CSV + Config compatibility:</b> a TGG config is a complete saved workspace definition, not just a set of API Explorer mappings. The config must contain the same physical CSV column names in its top-level <code>columns</code> array. The safest way to create a reusable config is to load the CSV, configure the Saved View, choose <b>Save View</b>, and then <b>Save Config</b>.</div>
+<div class="help-note"><b>CSV + Config compatibility:</b> a TGG config is a complete saved workspace definition, not just a set of view mappings. This applies to Grid, Kanban, Gantt, Sequence, and API Explorer samples. The config must contain the same physical CSV column names in its top-level <code>columns</code> array. The safest way to create a reusable config is to load the CSV, configure the Saved View, choose <b>Save View</b>, and then <b>Save Config</b>.</div>
 <p>Use one row per REST operation. Map columns for <b>Service Name</b>, <b>Operation Name</b>, <b>HTTP Method</b>, <b>Base URL</b>, and <b>Path</b>. Optional mappings are Description, Request Schema, Response Schema, Request Headers, Query Parameters, and Auth Type. JSON Schema or example JSON can live directly in quoted CSV cells; TGG pretty-prints it in the API page.</p>
 <pre>Service_Name,Operation_Name,Method,Base_URL,Path,Description,Request_Schema,Response_Schema,Request_Headers,Query_Params,Auth_Type
 Posts,Filter Posts,GET,https://jsonplaceholder.typicode.com,/posts,Filter by user,,{"type":"array"},"{""X-TGG-Demo"":""sample""}","{""userId"":1}",None</pre>
@@ -3681,7 +3681,7 @@ POST    200, 401, 403, 400, 500, ...</pre>
 <div aria-atomic="true" aria-live="polite" id="toastHost"></div>
 
 <script>
-const TGG_VERSION='v1148';
+const TGG_VERSION='v1149';
 const TGG_PRODUCT_NAME='TGG Grid';
 let rowHeight=30,rowHeightMode='auto';
 const $=id=>document.getElementById(id);
@@ -15060,6 +15060,7 @@ log('Startup validation: v1145 polishes Sequence combined-fragment rendering wit
 log('Startup validation: v1146 fixes Sequence fragment closing-boundary geometry so frame bottoms end near the end-control row and reserve extra space before the following interaction, preventing border/text overlap; Help updated.');
 log('Startup validation: v1147 adds API Explorer custom Request Headers and Query Parameters with optional CSV mappings, JSON/shorthand parsing, repeated query values, runtime editing, request assembly integration, backward-compatible config persistence, and updated Help.');
 log('Startup validation: v1148 clarifies config-schema validation for mapping-only JSON files and documents that reusable sample configs must be complete Save Config workspace definitions whose physical columns match the loaded CSV.');
+log('Startup validation: v1149 generalizes the sample-config guidance across Grid, Kanban, Gantt, Sequence, and API Explorer; the public repository sample pack was rebuilt so every JSON sample is a complete Save Config definition matched to its CSV.');
 log('Startup validation: Derived Columns v1061 adds read-only JavaScript virtual columns, CELL/NUM/DATE/ISBLANK row API, config persistence, derived-to-derived references, lazy caching, and integration with grid display/filter/sort/group/profile/data-quality/aggregate/pivot/chart source data.');
 log('Startup validation: Derived Columns v1062 fixes schema-change lifecycle ordering so a Derived Column cannot trigger rendering against an old virtual-row pool while being added, edited, removed, or restored from config.');
 log('Startup validation: Derived Columns v1063 persists and rehydrates derived-column order, width, hidden/pin state, and formatting independently from the physical CSV schema contract.');

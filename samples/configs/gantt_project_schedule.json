@@ -1,16 +1,188 @@
 {
-  "sample": "../gantt/project_schedule.csv",
-  "purpose": "Starter Gantt mapping",
-  "viewType": "gantt",
-  "gantt": {
-    "title": "Task_Name",
-    "start": "Start_Date",
-    "end": "End_Date",
-    "groupBy": "Phase",
-    "progress": "Progress",
-    "owner": "Owner",
-    "status": "Status",
-    "id": "Task_ID",
-    "scale": "week"
-  }
+  "version": 1,
+  "dataFile": "project_schedule.csv",
+  "generated": false,
+  "grid": {
+    "delimiter": ",",
+    "visibleRows": 10,
+    "rowHeightMode": "auto",
+    "overscan": 8
+  },
+  "columns": [
+    {
+      "name": "Task_ID",
+      "order": 0,
+      "width": 140,
+      "hidden": false,
+      "pin": "none"
+    },
+    {
+      "name": "Task_Name",
+      "order": 1,
+      "width": 220,
+      "hidden": false,
+      "pin": "none"
+    },
+    {
+      "name": "Start_Date",
+      "order": 2,
+      "width": 140,
+      "hidden": false,
+      "pin": "none"
+    },
+    {
+      "name": "End_Date",
+      "order": 3,
+      "width": 140,
+      "hidden": false,
+      "pin": "none"
+    },
+    {
+      "name": "Phase",
+      "order": 4,
+      "width": 140,
+      "hidden": false,
+      "pin": "none"
+    },
+    {
+      "name": "Progress",
+      "order": 5,
+      "width": 140,
+      "hidden": false,
+      "pin": "none"
+    },
+    {
+      "name": "Owner",
+      "order": 6,
+      "width": 140,
+      "hidden": false,
+      "pin": "none"
+    },
+    {
+      "name": "Status",
+      "order": 7,
+      "width": 140,
+      "hidden": false,
+      "pin": "none"
+    }
+  ],
+  "displayRules": [],
+  "dataValidation": [],
+  "filters": [],
+  "sorts": [],
+  "formulas": [],
+  "grouping": {
+    "columns": [],
+    "summaries": []
+  },
+  "dataQuality": null,
+  "derivedColumns": [],
+  "cellRenderers": [],
+  "actionColumns": [],
+  "analysis": {
+    "pivot": null,
+    "aggregate": null,
+    "pivotChart": null,
+    "aggregateChart": null,
+    "activeChartSource": "aggregate"
+  },
+  "views": [
+    {
+      "name": "Project Schedule",
+      "viewType": "gantt",
+      "kanban": null,
+      "gantt": {
+        "title": "Task_Name",
+        "start": "Start_Date",
+        "end": "End_Date",
+        "groupBy": "Phase",
+        "progress": "Progress",
+        "owner": "Owner",
+        "status": "Status",
+        "id": "Task_ID",
+        "scale": "week"
+      },
+      "sequence": null,
+      "api": null,
+      "state": {
+        "columns": [
+          {
+            "name": "Task_ID",
+            "order": 0,
+            "width": 140,
+            "hidden": false,
+            "pin": "none"
+          },
+          {
+            "name": "Task_Name",
+            "order": 1,
+            "width": 220,
+            "hidden": false,
+            "pin": "none"
+          },
+          {
+            "name": "Start_Date",
+            "order": 2,
+            "width": 140,
+            "hidden": false,
+            "pin": "none"
+          },
+          {
+            "name": "End_Date",
+            "order": 3,
+            "width": 140,
+            "hidden": false,
+            "pin": "none"
+          },
+          {
+            "name": "Phase",
+            "order": 4,
+            "width": 140,
+            "hidden": false,
+            "pin": "none"
+          },
+          {
+            "name": "Progress",
+            "order": 5,
+            "width": 140,
+            "hidden": false,
+            "pin": "none"
+          },
+          {
+            "name": "Owner",
+            "order": 6,
+            "width": 140,
+            "hidden": false,
+            "pin": "none"
+          },
+          {
+            "name": "Status",
+            "order": 7,
+            "width": 140,
+            "hidden": false,
+            "pin": "none"
+          }
+        ],
+        "filters": [],
+        "sorts": [],
+        "globalSearch": "",
+        "grouping": {
+          "columns": [],
+          "summaries": []
+        },
+        "freezePanes": {
+          "throughColumn": null,
+          "topRows": 0
+        },
+        "kanbanGridMode": "collapsed",
+        "openPanels": [
+          "Gantt View"
+        ]
+      }
+    }
+  ],
+  "activeView": "Project Schedule",
+  "openPanels": [
+    "Gantt View"
+  ]
 }
