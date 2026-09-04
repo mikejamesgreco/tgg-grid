@@ -10,6 +10,8 @@ Load a CSV, work with the data locally in your browser, and optionally save a TG
 
 > **Your CSV is the data. Your TGG configuration is the workspace.**
 
+![TGG Grid screenshot](screenshot.jpeg)
+
 ## Run TGG Grid
 
 **[▶ Run TGG Grid in your browser](https://mikejamesgreco.github.io/tgg-grid/)**
