@@ -2341,6 +2341,16 @@ label{font-size:10.5px !important;}
   text-align:center;
 }
 .tgg-footer .tgg-footer-brand{font-weight:600;color:#475569}
+.tgg-footer .tgg-footer-sep{margin:0 7px;color:#cbd5e1}
+.tgg-footer .tgg-footer-repo{
+  color:#475569;
+  font-weight:600;
+  text-decoration:none;
+}
+.tgg-footer .tgg-footer-repo:hover{
+  color:#2563eb;
+  text-decoration:underline;
+}
 
 </style>
 </head>
@@ -2460,7 +2470,7 @@ label{font-size:10.5px !important;}
 </div>
 </div>
 <footer class="tgg-footer" title="TGG Grid — The Greco Grid">
-  <span>© <span id="copyrightYear"></span> <span class="tgg-footer-brand">mikejamesgreco.me LLC</span>. All rights reserved. <span class="tgg-footer-version app-version"></span></span>
+  <span>© <span id="copyrightYear"></span> <span class="tgg-footer-brand">mikejamesgreco.me LLC</span>. All rights reserved. <span class="tgg-footer-version app-version"></span><span class="tgg-footer-sep">|</span><a class="tgg-footer-repo" href="https://github.com/mikejamesgreco/tgg-grid#readme" target="_blank" rel="noopener noreferrer" title="Open the TGG Grid repository and README on GitHub">GitHub / README ↗</a></span>
 </footer>
 </div>
 <div class="drawer-overlay" id="drawerOverlay"></div>
@@ -3181,7 +3191,7 @@ label{font-size:10.5px !important;}
 <ol><li>Choose a data file under <b>Data</b>, then click <b>Load Data</b>.</li><li>Use <b>Controls</b> to edit, format, filter, group, analyze, or add virtual columns.</li><li>If you have a compatible <code>.json</code> config (or legacy <code>.cfg</code>), choose it and click <b>Apply Config</b>.</li><li>Use <b>Save Data</b> for a safe physical-data checkpoint, <b>Export Data</b> for reporting output, and <b>Save Config</b> for the grid definition.</li></ol>
 <div class="help-note">Loading data creates a clean default grid definition. Applying a config does not reread the data file and does not discard row edits already made in the grid.
 <div class="help-tip"><b>Typical start:</b> you normally arrive with an existing CSV. Load it first; a config is optional. After editing or transforming the data, use <b>Save Data</b> to write the modified CSV. Use <b>Save Config</b> separately when you want to preserve the TGG workspace definition.</div>
-<div class="help-note"><b>Saved View presentations:</b> named Saved Views may be <b>Grid</b>, <b>Kanban</b>, <b>Gantt</b>, <b>Sequence</b>, or <b>API Explorer</b>. Source View remains the protected raw-CSV Grid baseline. All presentation types share the same loaded physical rows.</div></section><section class="help-topic" id="help-csv-prep" data-help-keywords="prepare csv sample example input existing file schema headers grid kanban gantt save data config optional">
+<div class="help-note"><b>Saved View presentations:</b> named Saved Views may be <b>Grid</b>, <b>Kanban</b>, <b>Gantt</b>, <b>Sequence</b>, or <b>API Explorer</b>. Source View remains the protected raw-CSV Grid baseline. All presentation types share the same loaded physical rows.</div><div class="help-note"><strong>Project documentation:</strong> The application footer includes a <strong>GitHub / README ↗</strong> link to the public TGG Grid repository for documentation, samples, release information, and project resources.</div></section><section class="help-topic" id="help-csv-prep" data-help-keywords="prepare csv sample example input existing file schema headers grid kanban gantt save data config optional">
 <h2>Preparing a CSV for TGG Grid</h2>
 <p><b>TGG Grid starts from an existing CSV dataset.</b> It is designed to load, explore, edit, validate, analyze, and present CSV data rather than create a brand-new CSV schema from a blank workspace.</p>
 <div class="help-note"><b>No config file is required to begin.</b> Load a CSV by itself and TGG builds the physical schema from the header row. You can then configure formatting, validation, Calculated/Derived Columns, Saved Views, Kanban, Gantt, actions, and analysis interactively. Save a config later if you want to preserve that workspace definition.</div>
@@ -3702,7 +3712,7 @@ POST    200, 401, 403, 400, 500, ...</pre>
 <div aria-atomic="true" aria-live="polite" id="toastHost"></div>
 
 <script>
-const TGG_VERSION='v1150';
+const TGG_VERSION='v1151';
 const TGG_PRODUCT_NAME='TGG Grid';
 let rowHeight=30,rowHeightMode='auto';
 const $=id=>document.getElementById(id);
