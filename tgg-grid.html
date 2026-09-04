@@ -2297,6 +2297,20 @@ label{font-size:10.5px !important;}
 @media (prefers-reduced-motion:reduce){
   .tgg-expansion{animation:none;opacity:.72}
 }
+.tgg-project-link{
+  display:block;
+  margin-top:2px;
+  font-size:9px;
+  line-height:1.1;
+  font-weight:700;
+  color:#64748b;
+  text-decoration:none;
+  white-space:nowrap;
+}
+.tgg-project-link:hover{
+  color:#2563eb;
+  text-decoration:underline;
+}
 
 /* Freeze Panes v1103 */
 .frozen-rows-layer{
@@ -2357,7 +2371,7 @@ label{font-size:10.5px !important;}
 <body>
 <div class="app-shell">
 <div class="topbar">
-<div class="topbar-brand" title="The Greco Grid"><strong title="The Greco Grid">TGG Grid</strong><span class="tgg-expansion" title="The Greco Grid">The Greco Grid</span></div>
+<div class="topbar-brand" title="The Greco Grid"><strong title="The Greco Grid">TGG Grid</strong><span class="tgg-expansion" title="The Greco Grid">The Greco Grid</span><a class="tgg-project-link" href="https://github.com/mikejamesgreco/tgg-grid#readme" target="_blank" rel="noopener noreferrer" title="Open TGG Grid documentation and source on GitHub">GitHub / Docs ↗</a></div>
 <div class="topbar-load-groups">
   <div class="load-group load-group-data">
     <span class="load-group-label">Data</span>
@@ -3191,7 +3205,7 @@ label{font-size:10.5px !important;}
 <ol><li>Choose a data file under <b>Data</b>, then click <b>Load Data</b>.</li><li>Use <b>Controls</b> to edit, format, filter, group, analyze, or add virtual columns.</li><li>If you have a compatible <code>.json</code> config (or legacy <code>.cfg</code>), choose it and click <b>Apply Config</b>.</li><li>Use <b>Save Data</b> for a safe physical-data checkpoint, <b>Export Data</b> for reporting output, and <b>Save Config</b> for the grid definition.</li></ol>
 <div class="help-note">Loading data creates a clean default grid definition. Applying a config does not reread the data file and does not discard row edits already made in the grid.
 <div class="help-tip"><b>Typical start:</b> you normally arrive with an existing CSV. Load it first; a config is optional. After editing or transforming the data, use <b>Save Data</b> to write the modified CSV. Use <b>Save Config</b> separately when you want to preserve the TGG workspace definition.</div>
-<div class="help-note"><b>Saved View presentations:</b> named Saved Views may be <b>Grid</b>, <b>Kanban</b>, <b>Gantt</b>, <b>Sequence</b>, or <b>API Explorer</b>. Source View remains the protected raw-CSV Grid baseline. All presentation types share the same loaded physical rows.</div><div class="help-note"><strong>Project documentation:</strong> The application footer includes a <strong>GitHub / README ↗</strong> link to the public TGG Grid repository for documentation, samples, release information, and project resources.</div></section><section class="help-topic" id="help-csv-prep" data-help-keywords="prepare csv sample example input existing file schema headers grid kanban gantt save data config optional">
+<div class="help-note"><b>Saved View presentations:</b> named Saved Views may be <b>Grid</b>, <b>Kanban</b>, <b>Gantt</b>, <b>Sequence</b>, or <b>API Explorer</b>. Source View remains the protected raw-CSV Grid baseline. All presentation types share the same loaded physical rows.</div><div class="help-note"><strong>Project documentation:</strong> Use <strong>GitHub / Docs ↗</strong> directly beneath the TGG branding at the top of the application, or <strong>GitHub / README ↗</strong> in the footer, to open the public TGG Grid repository. The repository contains the README, documentation, samples, source, release history, and other project resources.</div></section><section class="help-topic" id="help-csv-prep" data-help-keywords="prepare csv sample example input existing file schema headers grid kanban gantt save data config optional">
 <h2>Preparing a CSV for TGG Grid</h2>
 <p><b>TGG Grid starts from an existing CSV dataset.</b> It is designed to load, explore, edit, validate, analyze, and present CSV data rather than create a brand-new CSV schema from a blank workspace.</p>
 <div class="help-note"><b>No config file is required to begin.</b> Load a CSV by itself and TGG builds the physical schema from the header row. You can then configure formatting, validation, Calculated/Derived Columns, Saved Views, Kanban, Gantt, actions, and analysis interactively. Save a config later if you want to preserve that workspace definition.</div>
@@ -3712,7 +3726,7 @@ POST    200, 401, 403, 400, 500, ...</pre>
 <div aria-atomic="true" aria-live="polite" id="toastHost"></div>
 
 <script>
-const TGG_VERSION='v1151';
+const TGG_VERSION='v1152';
 const TGG_PRODUCT_NAME='TGG Grid';
 let rowHeight=30,rowHeightMode='auto';
 const $=id=>document.getElementById(id);
@@ -15074,6 +15088,7 @@ clearHistory();
 resetDataStateTracking();
 clearAggregateResults();
 log(`=== ${TGG_PRODUCT_NAME} ${TGG_VERSION} — The Greco Grid ===`);
+log(`Startup validation: ${TGG_VERSION} adds a persistent GitHub / Docs link beneath the TGG brand and documents both repository links in Help.`);
 log('Startup validation: saved-view dirty tracking now uses direct user panel-summary clicks instead of asynchronous details toggle events, preventing false dirty prompts after programmatic view application.');
 log('Loaded file: '+(location.pathname.split('/').pop()||location.href));
 log('Startup validation: obsolete console binding removed.');
